@@ -1,47 +1,110 @@
-#' Process Data from Wearable Research Devices Using Two-Regression Algorithms
+#' Apply an existing two-regression model
 #'
-#' The TwoRegression package is designed to make implementation of two-regression algorithms quick, easy, and accurate.
+#' Acts as a generic function that dispatches to specific implementation
+#' functions (\code{\link{crouter_2006}}, \code{\link{crouter_2010}},
+#' \code{\link{crouter_2012}}, or \code{\link{hibbing_2018}})
 #'
-#' @section Core functions:
+#' @param AG data frame of ActiGraph data
+#' @param method character scalar telling which model to apply to the data.
+#'   Currently supported selections are \code{"Crouter 2006"}, \code{"Crouter
+#'   2010"}, \code{"Crouter 2012"}, and \code{"Hibbing 2018"}. See following
+#'   subsections
+#' @param verbose logical. Print updates to console?
+#' @param ... arguments passed to the implementation function indicated by
+#'   \code{method}, then further passed to \code{\link{predict.TwoRegression}}
+#'   and (when \code{method == "Hibbing 2018"}) to \code{\link{smooth_2rm}}
+#'   as well
 #'
-#' \code{\link{get_cvPER}}
+#' @seealso
+#' \href{https://pubmed.ncbi.nlm.nih.gov/16322367/}{Crouter et al. (2006, \emph{J Appl Physiol})}
+#' \href{https://pubmed.ncbi.nlm.nih.gov/20400882/}{Crouter et al. (2010, \emph{Med Sci Sports Exerc})}
+#' \href{https://pubmed.ncbi.nlm.nih.gov/22143114/}{Crouter et al. (2012, \emph{Med Sci Sports Exerc})}
+#' \href{https://pubmed.ncbi.nlm.nih.gov/29271847/}{Hibbing et al. (2018,
+#' \emph{Med Sci Sports Exerc})}
 #'
-#' \code{\link{hibbing18_twoReg_process}}
+#' \code{\link{apply_two_regression_hibbing18}}
+#' \code{\link{smooth_2rm}}
+#'
+#'
+#' @return The original data appended with columns giving activity
+#'   classification (sedentary, ambulatory, or intermittent) and energy
+#'   expenditure (i.e, METs)
+#'
+#'
 #'
 #' @examples
-#' \dontrun{
-#' raw_file <-
-#'     system.file("extdata",
-#'         "TestID_LeftWrist_RAW.csv",
-#'         package = "TwoRegression")
 #'
-#' imu_file <-
-#'     system.file("extdata",
-#'         "TestID_LeftWrist_IMU.csv",
-#'         package = "TwoRegression")
+#' ## Datasets
 #'
-#' wear <- "Left Wrist"
-#' id <- "Test"
-#' alg <- 1:2
+#'   data(count_data, package = "TwoRegression")
+#'   data(all_data, package = "TwoRegression")
 #'
-#' hibbing18_twoReg_process(raw_file, imu_file, wear, id, alg)
-#' }
+#' ## Crouter 2006-2012 models
 #'
-#' @section Associated References:
-#' Hibbing PR, LaMunion SR, Kaplan AS, & Crouter SE (2017). Estimating
-#' energy expenditure with ActiGraph GT9X Inertial Measurement Unit.
-#' \emph{Medicine and Science in Sports and Exercise}. Advance online publication.
-#' doi: 10.1249/MSS.0000000000001532
+#'   TwoRegression(
+#'     count_data, "Crouter 2006",
+#'     movement_var = "Axis1", time_var = "time"
+#'   )
 #'
-#' @docType package
-#' @name TwoRegression
-NULL
+#'   TwoRegression(
+#'     count_data, "Crouter 2010",
+#'     movement_var = "Axis1", time_var = "time"
+#'   )
+#'
+#'   TwoRegression(
+#'     count_data, "Crouter 2012", movement_var = "Axis1",
+#'     time_var = "time", model = "VA", check = FALSE
+#'   )
+#'
+#'   TwoRegression(
+#'     count_data, "Crouter 2012", movement_var = "Vector.Magnitude",
+#'     time_var = "time", model = "VM", check = FALSE
+#'   )
+#'
+#' ## Hibbing 2018 models (can be vectorized)
+#'
+#'   all_data$ENMO_CV10s <- NULL
+#'   all_data$GVM_CV10s  <- NULL
+#'   all_data$Direction  <- NULL
+#'
+#'   result <- TwoRegression(
+#'     all_data, "Hibbing 2018", gyro_var = "Gyroscope_VM_DegPerS",
+#'     direction_var = "mean_magnetometer_direction",
+#'     site = c("Left Ankle", "Right Ankle"), algorithm = 1:2
+#'   )
+#'
+#'   utils::head(result)
+#'
+#' @name TwoRegression-Function
+#' @export
+#'
+TwoRegression <- function(
+    AG,
+    method = c("Crouter 2006", "Crouter 2010", "Crouter 2012", "Hibbing 2018"),
+    verbose = FALSE,
+    ...
+) {
 
-#' @importFrom magrittr %>%
-NULL
+  method <- match.arg(method)
 
-#' @importFrom stats predict sd setNames
-NULL
+  stopifnot(inherits(AG, "data.frame"))
 
-#' @importFrom utils read.csv
-NULL
+  timer <- PAutilities::manage_procedure(
+    "Start", "\nBeginning TwoRegression procedures", verbose = verbose
+  )
+
+  switch(
+    method,
+    "Crouter 2006" = crouter_2006(AG, ...),
+    "Crouter 2010" = crouter_2010(AG, ...),
+    "Crouter 2012" = crouter_2012(AG, ...),
+    "Hibbing 2018" = hibbing_2018(AG, verbose = verbose, ...)
+  ) %T>%
+  {PAutilities::manage_procedure(
+    "End",
+    "\nTwo-Regression processing complete. Total processing time:",
+    PAutilities::get_duration(timer), "minutes\n\n",
+    verbose = verbose
+  )}
+
+}

@@ -1,47 +1,75 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="author" content="Paul R. Hibbing" />
 
-<meta name="date" content="2018-03-16" />
 
 <title>The TwoRegression Package</title>
 
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
-
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -50,9 +78,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -83,7 +111,30 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
 </style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
 
 
 
@@ -97,9 +148,6 @@ padding-right: 2em;
 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 line-height: 1.35;
-}
-#header {
-text-align: center;
 }
 #TOC {
 clear: both;
@@ -268,8 +316,12 @@ code > span.st { color: #d14; }
 code > span.co { color: #888888; font-style: italic; } 
 code > span.ot { color: #007020; } 
 code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
+
+
+
 
 </head>
 
@@ -279,109 +331,622 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 <h1 class="title toc-ignore">The TwoRegression Package</h1>
-<h4 class="author"><em>Paul R. Hibbing</em></h4>
-<h4 class="date"><em>2018-03-16</em></h4>
+<h4 class="author">Paul R. Hibbing</h4>
 
 
 
-<div id="vignette-info" class="section level2">
-<h2>Vignette Info</h2>
-<p>The TwoRegression package is designed to make it easy to quickly and accurately apply two-regression algorithms to data from wearable research devices. In conjunction with common batch processing syntax in R (e.g. <code>mapply</code> or <code>lapply</code>), the TwoRegression package presents a powerful tool for handling data from large studies. This vignette will demonstrate how to utilize the core features of the package, to set you on your way towards processing your data.</p>
+<div id="introduction" class="section level2">
+<h2>INTRODUCTION</h2>
+<p>The TwoRegression package allows users to quickly and accurately
+develop/apply two-regression algorithms to data from research-grade
+wearable devices. This vignette is designed to demonstrate usage of the
+package’s core features.</p>
+<p>Before getting into that, it’s valuable to cover some history. The
+package was initially established as a home for the models of <a href="https://pubmed.ncbi.nlm.nih.gov/29271847">Hibbing et al.
+(2018)</a>. Since the initial release, support has been added for
+developing/applying new models, as well as applying others from prior
+research (see <a href="https://pubmed.ncbi.nlm.nih.gov/16322367/">Crouter et
+al.(2006)</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/20400882/">Crouter et
+al.(2010)</a>, and <a href="https://pubmed.ncbi.nlm.nih.gov/22143114/">Crouter et
+al.(2012)</a>). As of version 1.0.0, a new approach has been implemented
+for invoking prior methods via the <code>TwoRegression</code> function,
+which we will look at in the following section. Afterwards, we will
+cover the process of creating and cross-validating new models, plus
+other aspects of using them effectively.</p>
 </div>
-<div id="the-basics" class="section level2">
-<h2>The basics</h2>
-<p>To use the two-regression algorithms of <a href="https://www.ncbi.nlm.nih.gov/pubmed/29271847">Hibbing et al. (2018)</a>, you need to use the <code>hibbing18_twoReg_process</code> function, which requires:</p>
+<div id="implementing-two-regression-models-that-already-exist" class="section level2">
+<h2>IMPLEMENTING TWO-REGRESSION MODELS THAT ALREADY EXIST</h2>
+<div id="approach-and-options" class="section level4">
+<h4>Approach and Options</h4>
+<p>Prior models are implemented using the <code>TwoRegression</code>
+function. Currently, support is available for the following:</p>
 <ul>
-<li>A RAW.csv file generated from the GT9X primary accelerometer</li>
-<li>An IMU.csv file generated from the GT9X IMU (not required if using Algorithm 1)</li>
-<li>Wear location(s) to specify which algorithm site(s) to use</li>
-<li>An ID with which to label the data</li>
-<li>An algorithm selection (1, 2, and/or 3)</li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/16322367/">Crouter et
+al.(2006)</a>: The original Crouter two-regression model (for
+adults)</li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/20400882/">Crouter et
+al.(2010)</a>: The refined Crouter two-regression model (for
+adults)</li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/22143114/">Crouter et
+al.(2012)</a>: Two youth-specific Crouter two-regression models for
+activity count data, one using vertical axis counts and the other using
+vector magnitude counts</li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/29271847/">Hibbing et
+al. (2018)</a>: Fifteen two-regression models for adults, each
+corresponding to one of five attachment sites (hip, wrists, ankles) and
+one of three model configurations (accelerometer only, accelerometer and
+gyroscope, or accelerometer, gyroscope, and magnetometer)</li>
 </ul>
-<p>Additionally, you can set <code>verbose = TRUE</code> to view updates during processing.</p>
-<p>By default, the function will ignore IMU files when Algorithm 1 is the only selection. If you want to use Algorithm 1, but still see the IMU varibles, set <code>IMU_ignore_A1 = FALSE</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(TwoRegression)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#&gt; package 'TwoRegression' was built under R version 3.4.3</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">RAW &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;TestID_LeftWrist_RAW.csv&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;TwoRegression&quot;</span>)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">IMU &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">  </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;TestID_LeftWrist_IMU.csv&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;TwoRegression&quot;</span>) <span class="co">#Set this to NULL if no IMU file exists</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">Wear_Location &lt;-<span class="st"> &quot;Left Wrist&quot;</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">PID &lt;-<span class="st"> &quot;Test&quot;</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">Algorithm &lt;-<span class="st"> </span><span class="dv">3</span> <span class="co">#Will be automatically set to 1 if no IMU file is present</span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">verbose &lt;-<span class="st"> </span><span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">IMU_ignore_A1 &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">test_data &lt;-</a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="st">  </span><span class="kw">hibbing18_twoReg_process</span>(RAW, IMU, Wear_Location, PID, Algorithm, verbose, IMU_ignore_A1)</a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="kw">print</span>(<span class="kw">head</span>(test_data))</a>
-<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt;    PID file_source_PrimaryAccel date_processed_PrimaryAccel</span></a>
-<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#&gt; 1 Test TestID_LeftWrist_RAW.csv         2018-03-16 20:30:32</span></a>
-<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="co">#&gt; 2 Test TestID_LeftWrist_RAW.csv         2018-03-16 20:30:32</span></a>
-<a class="sourceLine" id="cb1-19" data-line-number="19"><span class="co">#&gt; 3 Test TestID_LeftWrist_RAW.csv         2018-03-16 20:30:32</span></a>
-<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="co">#&gt; 4 Test TestID_LeftWrist_RAW.csv         2018-03-16 20:30:32</span></a>
-<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="co">#&gt; 5 Test TestID_LeftWrist_RAW.csv         2018-03-16 20:30:32</span></a>
-<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="co">#&gt; 6 Test TestID_LeftWrist_RAW.csv         2018-03-16 20:30:32</span></a>
-<a class="sourceLine" id="cb1-23" data-line-number="23"><span class="co">#&gt;            file_source_IMU  date_processed_IMU           Timestamp</span></a>
-<a class="sourceLine" id="cb1-24" data-line-number="24"><span class="co">#&gt; 1 TestID_LeftWrist_IMU.csv 2018-03-16 20:30:33 2015-11-12 15:45:00</span></a>
-<a class="sourceLine" id="cb1-25" data-line-number="25"><span class="co">#&gt; 2 TestID_LeftWrist_IMU.csv 2018-03-16 20:30:33 2015-11-12 15:45:01</span></a>
-<a class="sourceLine" id="cb1-26" data-line-number="26"><span class="co">#&gt; 3 TestID_LeftWrist_IMU.csv 2018-03-16 20:30:33 2015-11-12 15:45:02</span></a>
-<a class="sourceLine" id="cb1-27" data-line-number="27"><span class="co">#&gt; 4 TestID_LeftWrist_IMU.csv 2018-03-16 20:30:33 2015-11-12 15:45:03</span></a>
-<a class="sourceLine" id="cb1-28" data-line-number="28"><span class="co">#&gt; 5 TestID_LeftWrist_IMU.csv 2018-03-16 20:30:33 2015-11-12 15:45:04</span></a>
-<a class="sourceLine" id="cb1-29" data-line-number="29"><span class="co">#&gt; 6 TestID_LeftWrist_IMU.csv 2018-03-16 20:30:33 2015-11-12 15:45:05</span></a>
-<a class="sourceLine" id="cb1-30" data-line-number="30"><span class="co">#&gt;   day_of_year minute_of_day     ENMO Gyroscope_VM_DegPerS</span></a>
-<a class="sourceLine" id="cb1-31" data-line-number="31"><span class="co">#&gt; 1         316           945 91.81064            0.6985270</span></a>
-<a class="sourceLine" id="cb1-32" data-line-number="32"><span class="co">#&gt; 2         316           945 63.90690            0.6976330</span></a>
-<a class="sourceLine" id="cb1-33" data-line-number="33"><span class="co">#&gt; 3         316           945 63.70351            0.6806886</span></a>
-<a class="sourceLine" id="cb1-34" data-line-number="34"><span class="co">#&gt; 4         316           945 64.24208            0.6806373</span></a>
-<a class="sourceLine" id="cb1-35" data-line-number="35"><span class="co">#&gt; 5         316           945 63.70059            0.6926852</span></a>
-<a class="sourceLine" id="cb1-36" data-line-number="36"><span class="co">#&gt; 6         316           945 63.58346            0.6989126</span></a>
-<a class="sourceLine" id="cb1-37" data-line-number="37"><span class="co">#&gt;   mean_abs_Gyroscope_x_DegPerS mean_abs_Gyroscope_y_DegPerS</span></a>
-<a class="sourceLine" id="cb1-38" data-line-number="38"><span class="co">#&gt; 1                    0.2207365                    0.5846348</span></a>
-<a class="sourceLine" id="cb1-39" data-line-number="39"><span class="co">#&gt; 2                    0.2344190                    0.5713514</span></a>
-<a class="sourceLine" id="cb1-40" data-line-number="40"><span class="co">#&gt; 3                    0.2176725                    0.5628797</span></a>
-<a class="sourceLine" id="cb1-41" data-line-number="41"><span class="co">#&gt; 4                    0.2382042                    0.5606505</span></a>
-<a class="sourceLine" id="cb1-42" data-line-number="42"><span class="co">#&gt; 5                    0.2274410                    0.5743000</span></a>
-<a class="sourceLine" id="cb1-43" data-line-number="43"><span class="co">#&gt; 6                    0.2290555                    0.5746244</span></a>
-<a class="sourceLine" id="cb1-44" data-line-number="44"><span class="co">#&gt;   mean_abs_Gyroscope_z_DegPerS mean_magnetometer_direction GVM_CV10s</span></a>
-<a class="sourceLine" id="cb1-45" data-line-number="45"><span class="co">#&gt; 1                    0.3059072                           S 1.1974519</span></a>
-<a class="sourceLine" id="cb1-46" data-line-number="46"><span class="co">#&gt; 2                    0.3203365                           S 1.0903678</span></a>
-<a class="sourceLine" id="cb1-47" data-line-number="47"><span class="co">#&gt; 3                    0.3101393                           S 1.0106332</span></a>
-<a class="sourceLine" id="cb1-48" data-line-number="48"><span class="co">#&gt; 4                    0.3001943                           S 1.0106332</span></a>
-<a class="sourceLine" id="cb1-49" data-line-number="49"><span class="co">#&gt; 5                    0.3083593                           S 1.0106332</span></a>
-<a class="sourceLine" id="cb1-50" data-line-number="50"><span class="co">#&gt; 6                    0.3191014                           S 0.9701746</span></a>
-<a class="sourceLine" id="cb1-51" data-line-number="51"><span class="co">#&gt;   Direction Left_Wrist_Algorithm3_Classification</span></a>
-<a class="sourceLine" id="cb1-52" data-line-number="52"><span class="co">#&gt; 1        NA                                  SED</span></a>
-<a class="sourceLine" id="cb1-53" data-line-number="53"><span class="co">#&gt; 2        NA                                  SED</span></a>
-<a class="sourceLine" id="cb1-54" data-line-number="54"><span class="co">#&gt; 3         0                                  SED</span></a>
-<a class="sourceLine" id="cb1-55" data-line-number="55"><span class="co">#&gt; 4         0                                  SED</span></a>
-<a class="sourceLine" id="cb1-56" data-line-number="56"><span class="co">#&gt; 5         0                                  SED</span></a>
-<a class="sourceLine" id="cb1-57" data-line-number="57"><span class="co">#&gt; 6         0                                  SED</span></a>
-<a class="sourceLine" id="cb1-58" data-line-number="58"><span class="co">#&gt;   Left_Wrist_Algorithm3_METs</span></a>
-<a class="sourceLine" id="cb1-59" data-line-number="59"><span class="co">#&gt; 1                       1.25</span></a>
-<a class="sourceLine" id="cb1-60" data-line-number="60"><span class="co">#&gt; 2                       1.25</span></a>
-<a class="sourceLine" id="cb1-61" data-line-number="61"><span class="co">#&gt; 3                       1.25</span></a>
-<a class="sourceLine" id="cb1-62" data-line-number="62"><span class="co">#&gt; 4                       1.25</span></a>
-<a class="sourceLine" id="cb1-63" data-line-number="63"><span class="co">#&gt; 5                       1.25</span></a>
-<a class="sourceLine" id="cb1-64" data-line-number="64"><span class="co">#&gt; 6                       1.25</span></a></code></pre></div>
-<p>If you aren’t familiar with R commands that enable batch processing, consider the below hypothetical example. The <code>RAW &lt;-</code> and <code>IMU &lt;-</code> commands should give two vectors that contain paths to primary accelerometer and IMU files, respectively. The vectors should be the same length, and be index-matched, such that the first file in <code>RAW</code> corresponds with the first file in <code>IMU</code>, and so on.</p>
-<p>The PID variable can be manually defined to establish a vector of PIDs to assign to the data files in <code>RAW</code> and <code>IMU</code>. Alternatively, you can use string functions (e.g. <code>substring</code>) to identify PIDs automatically if your files have a consistent naming convention.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># RAW &lt;- list.files(pattern = &quot;RAW.csv&quot;, full.names = TRUE)</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co"># IMU &lt;- list.files(pattern = &quot;IMU.csv&quot;, full.names = TRUE)</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co"># PID &lt;- paste(&quot;Test&quot;, seq(RAW), sep = &quot;_&quot;)</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># </span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co"># test_data &lt;-</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#   mapply(</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#   hibbing18_twoReg_process,</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#   RAW = RAW,</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#   IMU = IMU,</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#   PID = PID,</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#   MoreArgs = list(Wear_Location = &quot;Left Wrist&quot;, Algorithm = c(1, 2)),</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#   SIMPLIFY = FALSE</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#   )</span></a></code></pre></div>
-<p>This returns your processed files as separate items in a list. To combine them, use <code>combined_data &lt;- do.call(rbind, test_data)</code>. You can then export your data in csv format if you prefer to deal with it in another platform. A good recommendation is to use the <code>fwrite</code> function from the data.table package, which is substantially faster than <code>write.csv</code>.</p>
+</div>
+<div id="help-documentation" class="section level4">
+<h4>Help documentation</h4>
+<p>It’s very important that you look at the <code>TwoRegression</code>
+function documentation. It will help you understand what settings you
+need to provide in order to run a specific model correctly. To view the
+documentation, run the following:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>?TwoRegression<span class="sc">::</span>TwoRegression</span></code></pre></div>
+<p>This will pull up a documentation page where you can see the syntax
+for calling the <code>TwoRegression</code> function. Importantly, the
+page also lists the syntax for several internal applicators (i.e.,
+<code>crouter_2006</code>, <code>crouter_2010</code>,
+<code>crouter_2012</code>, and <code>hibbing_2018</code>), which are the
+functions that actually do the work of applying your selected model.
+That is, the <code>TwoRegression</code> function is just a wrapper
+around those other internal functions, and based on the method you
+select, <code>TwoRegression</code> will call out to the corresponding
+applicator. In most cases, you will need to designate some extra
+settings for the applicator, which is why the syntax is listed in the
+documentation file alongside the <code>TwoRegression</code> syntax.
+Arguments for the internal functions can be passed into the
+<code>TwoRegression</code> function directly, as if they were arguments
+to that function itself. This will be easier to see and understand in
+the coding samples later on in this section, but it’s important to be
+aware of all this from the get-go.</p>
+</div>
+<div id="assumptions-and-data" class="section level4">
+<h4>Assumptions and Data</h4>
+<p>The <code>TwoRegression</code> function operates under the assumption
+you already have data read into R. You can do this with the
+<code>AGread</code> package.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">&quot;remotes&quot;</span> <span class="sc">%in%</span> installed.packages)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">&quot;AGread&quot;</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>())</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;paulhibbing/AGread&quot;</span>)</span></code></pre></div>
+<p>For the sake of this illustration, the TwoRegression package provides
+some sample data we can use. If you can get your own data into a form
+that mirrors the sample data below, you’ll be in good shape. Here’s how
+to access it:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(count_data, <span class="at">package =</span> <span class="st">&quot;TwoRegression&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(all_data, <span class="at">package =</span> <span class="st">&quot;TwoRegression&quot;</span>)</span></code></pre></div>
+<p>The <code>count_data</code> object contains activity count data (for
+the Crouter two-regression models), while the <code>all_data</code>
+object contains raw sensor data (for the Hibbing models). We can view
+the first few rows of count data as follows:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(count_data)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:45:10     0     0     0                0</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:45:20     0     0     0                0</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:45:30     0     0     0                0</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:45:40     0     0     0                0</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2015-11-12 15:45:50     0     0     0                0</span></span></code></pre></div>
+<p>We can do the same using a similar approach for the raw data.
+However, let’s remove some extraneous variables first.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> all_data[ ,<span class="fu">setdiff</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(all_data),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## These are the variables to remove:</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;file_source_PrimaryAccel&quot;</span>, <span class="st">&quot;date_processed_PrimaryAccel&quot;</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;file_source_IMU&quot;</span>, <span class="st">&quot;date_processed_IMU&quot;</span>, <span class="st">&quot;day_of_year&quot;</span>, <span class="st">&quot;minute_of_day&quot;</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Remove the following because they&#39;ll be recalculated later</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ENMO_CV10s&quot;</span>, <span class="st">&quot;GVM_CV10s&quot;</span>, <span class="st">&quot;Direction&quot;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>)]</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(all_data)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    PID           Timestamp     ENMO Gyroscope_VM_DegPerS</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Test 2015-11-12 15:45:00 91.81064            0.6985270</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Test 2015-11-12 15:45:01 63.90690            0.6976330</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Test 2015-11-12 15:45:02 63.70351            0.6806886</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Test 2015-11-12 15:45:03 64.24208            0.6806373</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Test 2015-11-12 15:45:04 63.70059            0.6926852</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Test 2015-11-12 15:45:05 63.58346            0.6989126</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_x_DegPerS mean_abs_Gyroscope_y_DegPerS</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                    0.2207365                    0.5846348</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                    0.2344190                    0.5713514</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                    0.2176725                    0.5628797</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                    0.2382042                    0.5606505</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                    0.2274410                    0.5743000</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                    0.2290555                    0.5746244</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_z_DegPerS mean_magnetometer_direction</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                    0.3059072                           S</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                    0.3203365                           S</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                    0.3101393                           S</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                    0.3001943                           S</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                    0.3083593                           S</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                    0.3191014                           S</span></span></code></pre></div>
+</div>
+<div id="applying-crouter-models-for-activity-count-data" class="section level4">
+<h4>Applying Crouter models (for activity count data)</h4>
+<p>Once you have your dataset ready, it’s easy to apply a two-regression
+model. Just invoke the <code>TwoRegression</code> function like
+this:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>crouter2006_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  count_data, <span class="st">&quot;Crouter 2006&quot;</span>, <span class="at">movement_var =</span> <span class="st">&quot;Axis1&quot;</span>, <span class="at">time_var =</span> <span class="st">&quot;time&quot;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>crouter2010_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  count_data, <span class="st">&quot;Crouter 2010&quot;</span>, <span class="at">movement_var =</span> <span class="st">&quot;Axis1&quot;</span>, <span class="at">time_var =</span> <span class="st">&quot;time&quot;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>crouter2012_va_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  count_data, <span class="st">&quot;Crouter 2012&quot;</span>, <span class="at">movement_var =</span> <span class="st">&quot;Axis1&quot;</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">time_var =</span> <span class="st">&quot;time&quot;</span>, <span class="at">model =</span> <span class="st">&quot;VA&quot;</span>, <span class="at">check =</span> <span class="cn">FALSE</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>crouter2012_vm_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  count_data, <span class="st">&quot;Crouter 2012&quot;</span>, <span class="at">movement_var =</span> <span class="st">&quot;Vector.Magnitude&quot;</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">time_var =</span> <span class="st">&quot;time&quot;</span>, <span class="at">model =</span> <span class="st">&quot;VM&quot;</span>, <span class="at">check =</span> <span class="cn">FALSE</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>For the Crouter 2012 models, you have to choose between the vertical
+axis model and the vector magnitude model. If you don’t set
+<code>check = FALSE</code>, you will get a warning about which movement
+variable and model you’ve selected. This is meant as a prompt for you to
+ensure your selected movement variable matches your selected model. Once
+you’re confident in your selection, you can set
+<code>check = FALSE</code> and the warning won’t show up.</p>
+<p>For the time being, you can only implement Crouter models one at a
+time. Of course, you can combine the output from multiple models
+yourself. Ideally, with ongoing development, a point will come where
+this can be done automatically and efficiently (see the <a href="https://github.com/paulhibbing/TwoRegression/issues/1">GitHub
+issue on this topic</a>), but for now it isn’t built in. As we’ll see in
+the following subsection, though, it <em>is</em> doable for the Hibbing
+models. Here’s a look at the output from the prior commands:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(crouter2006_results)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude   cv_10 Classification</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410 244.949   intermittent</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00     0     0     0                0   0.000             SB</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00     0     0     0                0   0.000             SB</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00     0     0     0                0   0.000             SB</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00     0     0     0                0   0.000             SB</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       METs</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2.446791</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 1.000000</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 1.000000</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 1.000000</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 1.000000</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(crouter2010_results)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude mean_cv_10 SB_epochs</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410   40.82483         5</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   walkrun_epochs intermittent_epochs    METs</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1              0                   1 1.28234</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2              0                   0 1.00000</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3              0                   0 1.00000</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4              0                   0 1.00000</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5              0                   0 1.00000</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(crouter2012_va_results)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude mean_cv_10 SB_epochs</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410   40.82483         5</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   walkrun_epochs intermittent_epochs    METs</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1              0                   1 1.34108</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2              0                   0 1.00000</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3              0                   0 1.00000</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4              0                   0 1.00000</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5              0                   0 1.00000</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(crouter2012_vm_results)</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude mean_cv_10 SB_epochs</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410   40.82483         5</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   walkrun_epochs intermittent_epochs     METs</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1              0                   1 1.368691</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2              0                   0 1.000000</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3              0                   0 1.000000</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4              0                   0 1.000000</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5              0                   0 1.000000</span></span></code></pre></div>
+</div>
+<div id="applying-hibbing-models-for-raw-sensor-data" class="section level4">
+<h4>Applying Hibbing models (for raw sensor data)</h4>
+<p>The Hibbing models are implemented similarly to the Crouter models. A
+key difference, though, is that you can ask the function to run multiple
+models simultaneously. That’s what we’ll see in the following
+example:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>hibbing2018_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  all_data, <span class="st">&quot;Hibbing 2018&quot;</span>, <span class="at">accel_var =</span> <span class="st">&quot;ENMO&quot;</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">gyro_var =</span> <span class="st">&quot;Gyroscope_VM_DegPerS&quot;</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction_var =</span> <span class="st">&quot;mean_magnetometer_direction&quot;</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Here is where we can select an algorithm from multiple sites:</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">site =</span> <span class="fu">c</span>(<span class="st">&quot;Left Ankle&quot;</span>, <span class="st">&quot;Right Ankle&quot;</span>),</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## And here is where we can select multiple algorithms</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="do">## (1 = accelerometer only; 2 = accelerometer and gyroscope;</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 3 = accelerometer, gyroscope, and magnetometer)</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">algorithm =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="do">## We can also ask the function to collapse data every minute by making an</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="do">## extra call to `smooth_2rm`</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">smooth =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(hibbing2018_results)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Timestamp  PID mean_magnetometer_direction     ENMO</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00 Test                           S 3955.371</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00 Test                           S 3971.312</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00 Test                           S 3970.534</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00 Test                           S 3929.218</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00 Test                           S 3771.568</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Gyroscope_VM_DegPerS mean_abs_Gyroscope_x_DegPerS</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1             41.23766                     13.79911</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2             41.46834                     13.82252</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3             41.77129                     14.04145</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4             41.99182                     14.09534</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5             41.40131                     13.84211</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_y_DegPerS mean_abs_Gyroscope_z_DegPerS ENMO_CV10s</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                     33.78546                     18.90326  0.6910839</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                     33.91097                     19.15887  0.4586548</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                     34.32867                     18.90991  0.5657218</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                     34.66010                     18.75561  0.5590702</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                     34.23208                     18.42478  0.6726754</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   GVM_CV10s Left_Ankle_Algorithm1_SB_epochs</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.8023038                               0</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 0.7353243                               0</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 0.7774376                               0</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 0.7712045                               0</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 0.7228010                               0</span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Left_Ankle_Algorithm1_walkrun_epochs</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                   60</span></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                   60</span></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                   60</span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                   60</span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                   59</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Left_Ankle_Algorithm1_intermittent_epochs Right_Ankle_Algorithm1_SB_epochs</span></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                         0                                0</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                         0                                0</span></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                         0                                0</span></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                         0                                0</span></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                         0                                0</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm1_walkrun_epochs</span></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                    60</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                    60</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                    60</span></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                    60</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                    59</span></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm1_intermittent_epochs Left_Ankle_Algorithm2_SB_epochs</span></span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                          0                              60</span></span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                          0                              60</span></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                          0                              60</span></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                          0                              60</span></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                          0                              59</span></span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Left_Ankle_Algorithm2_walkrun_epochs</span></span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                    0</span></span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                    0</span></span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                    0</span></span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                    0</span></span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                    0</span></span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Left_Ankle_Algorithm2_intermittent_epochs Right_Ankle_Algorithm2_SB_epochs</span></span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                         0                               60</span></span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                         0                               60</span></span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                         0                               60</span></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                         0                               60</span></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                         0                               59</span></span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm2_walkrun_epochs</span></span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                     0</span></span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                     0</span></span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                     0</span></span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                     0</span></span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                     0</span></span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm2_intermittent_epochs Left_Ankle_Algorithm1_METs</span></span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                          0                   2.732142</span></span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                          0                   2.733321</span></span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                          0                   2.733263</span></span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                          0                   2.730209</span></span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                          0                   2.723279</span></span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm1_METs Left_Ankle_Algorithm2_METs</span></span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                    2.463901                       1.25</span></span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                    2.465122                       1.25</span></span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                    2.465063                       1.25</span></span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                    2.461897                       1.25</span></span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                    2.454716                       1.25</span></span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm2_METs</span></span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                        1.25</span></span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                        1.25</span></span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                        1.25</span></span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                        1.25</span></span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                        1.25</span></span></code></pre></div>
+<p>So, each algorithm is run, and the information is stored in a unique
+and descriptive variable name.</p>
+</div>
+</div>
+<div id="fitting-and-examining-new-models" class="section level2">
+<h2>FITTING AND EXAMINING NEW MODELS</h2>
+<div id="background-and-setup" class="section level4">
+<h4>Background and Setup</h4>
+<p>The TwoRegression package is also useful if you want to create your
+own model. To get this going, though, your dataset needs to have some
+more complex information in it. We’ll use our previous
+<code>all_data</code> object in this illustration. First, we need to
+label it with some pretend activity labels and energy expenditure values
+(METs). In a real-life setting, the MET values would likely come from
+indirect calorimetry. To create some of this imaginary data, we can run
+the following:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">307</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>fake_sed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Lying&quot;</span>, <span class="st">&quot;Sitting&quot;</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>fake_lpa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Sweeping&quot;</span>, <span class="st">&quot;Dusting&quot;</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>fake_cwr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Walking&quot;</span>, <span class="st">&quot;Running&quot;</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>fake_ila <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Tennis&quot;</span>, <span class="st">&quot;Basketball&quot;</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>fake_activities <span class="ot">&lt;-</span> <span class="fu">c</span>(fake_sed, fake_lpa, fake_cwr, fake_ila)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>all_data<span class="sc">$</span>Activity <span class="ot">&lt;-</span> <span class="fu">sample</span>(fake_activities, <span class="fu">nrow</span>(all_data), <span class="cn">TRUE</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>all_data<span class="sc">$</span>fake_METs <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  all_data<span class="sc">$</span>Activity <span class="sc">%in%</span> <span class="fu">c</span>(fake_sed, fake_lpa),</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">runif</span>(<span class="fu">nrow</span>(all_data), <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">runif</span>(<span class="fu">nrow</span>(all_data), <span class="fl">2.5</span>, <span class="dv">8</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>For this demonstration, a couple of extra hacks are needed, which
+would be much more natural to handle with real data. Still, they’re
+helpful to see. First, we need to make sure our dataset has a column
+indicating which participant each data point came from. In this case,
+we’ll just label our data to pretend it came from two sample files
+instead of one (where ‘sample file’ is analogous to ‘participant’). The
+other step is calculating the coefficient of variation (CV). We
+technically could have avoided this by choosing not to delete the CV
+variables earlier. But that decision now gives us an excuse to show how
+convenient it is to calculate CV in the TwoRegression package.There were
+also some technical reasons for deleting the variables earlier, but
+nevermind that (see <a href="https://github.com/paulhibbing/TwoRegression/issues/2">another
+GitHub issue</a> if you’re curious).</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>all_data<span class="sc">$</span>PID <span class="ot">&lt;-</span> <span class="fu">rep</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Test1&quot;</span>, <span class="st">&quot;Test2&quot;</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">each =</span> <span class="fu">ceiling</span>(<span class="fu">nrow</span>(all_data) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)[<span class="fu">seq</span>(<span class="fu">nrow</span>(all_data))]</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>all_data<span class="sc">$</span>ENMO_CV10s <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">cv_2rm</span>(all_data<span class="sc">$</span>ENMO)</span></code></pre></div>
+</div>
+<div id="fitting-the-model" class="section level4">
+<h4>Fitting the Model</h4>
+<p>When we go to fit the model, we’ll use the <code>fit_2rm</code>
+function. There are a lot of arguments to provide here:</p>
+<ul>
+<li><strong>data: </strong> The dataset</li>
+<li><strong>activity_var: </strong> The name of the variable that
+indicates the activity</li>
+<li><strong>sed_cp_activities: </strong> The subset of values from
+<code>activity_var</code> that should be included when calibrating the
+2RM sedentary cut point</li>
+<li><strong>sed_activities: </strong> The subset of values from
+<code>activity_var</code> that should be labeled as positive for
+sedentary behavior when calibrating the 2RM sedentary cut point</li>
+<li><strong>sed_cp_var: </strong> The name of the variable for which the
+2RM sedentary cut point should be calibrated.</li>
+<li><strong>sed_METs: </strong> The MET value to assign for sedentary
+behaviors (i.e., when the value for <code>sed_cp_var</code> falls below
+the 2RM sedentary cut point)</li>
+<li><strong>walkrun_activities: </strong> The subset of values from
+<code>activity_var</code> that should be labeled as positive for
+“continuous walking/running” (CWR) when calibrating the 2RM CWR cut
+point</li>
+<li><strong>walkrun_cp_var: </strong> The name of the variable for which
+the 2RM CWR cut point should be calibrated</li>
+<li><strong>met_var: </strong> The name of the MET variable that the 2RM
+should be fitted to predict</li>
+<li><strong>walkrun_formula: </strong> A character representation of the
+formula that should be used when fitting the CWR model (formulated as
+<code>outcome ~ predictors</code>)</li>
+<li><strong>intermittent_formula: </strong> A character representation
+of the formula that should be used when fitting the intermittent
+lifestyle activities model (formulated like <code>walkrun_formula</code>
+– note that data transformations like squaring or cubing should be
+wrapped in <code>I()</code>)</li>
+</ul>
+<p>From there, we can fit our model like this:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>my_model <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">fit_2rm</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> all_data,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">activity_var =</span> <span class="st">&quot;Activity&quot;</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_cp_activities =</span> <span class="fu">c</span>(fake_sed, fake_lpa),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_activities =</span> fake_sed,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_cp_var =</span> <span class="st">&quot;ENMO&quot;</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_METs =</span> <span class="fl">1.25</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">walkrun_activities =</span> fake_cwr,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">walkrun_cp_var =</span> <span class="st">&quot;ENMO_CV10s&quot;</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">met_var =</span> <span class="st">&quot;fake_METs&quot;</span>,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">walkrun_formula =</span> <span class="st">&quot;fake_METs ~ ENMO&quot;</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">intermittent_formula =</span> <span class="st">&quot;fake_METs ~ ENMO + I(ENMO^2) + I(ENMO^3)&quot;</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="examining-model-performance" class="section level4">
+<h4>Examining Model Performance</h4>
+<p>The package provides summary and plot methods to understand,
+cross-validate, and visualize the model. Notably, this demonstration
+model is not meant to perform well or look pretty (the data are just
+numbers that have no real meaning), but we’ll still take a look at how
+to run the code.</p>
+<p>As far as the summary method goes, this is where we need the
+participant identification column we set up earlier. Specifically, it
+will be used for leave-one-out cross-validation, where the data are
+split up into different chunks while the model is repeatedly re-fitted.
+Other information in the output includes a textual representation of the
+overall algorithm and summaries of the fit/performance of individual
+components (i.e., ROC and regression analyses). To pull all of this up,
+you just have to run code that matches the following pattern:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  my_model,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject_var =</span> <span class="st">&quot;PID&quot;</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">MET_var =</span> <span class="st">&quot;fake_METs&quot;</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">activity_var =</span> <span class="st">&quot;Activity&quot;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $cut_points</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $cut_points$sedentary_ENMO</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   threshold specificity sensitivity </span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  65.7094366   0.5068493   0.5362319 </span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $cut_points$walk_run_ENMO</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   threshold specificity sensitivity </span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.4777372   0.5777778   0.5185185 </span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $regression_models</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $regression_models$walk_run</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            formula adj.r.squared      see</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 fake_METs ~ ENMO   -0.01142529 2.264023</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $regression_models$intermittent_activity</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                    formula adj.r.squared      see</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 fake_METs ~ ENMO + I(ENMO^2) + I(ENMO^3)   -0.03106764 2.152466</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $leave_one_out</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       RMSE     MAPE</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 4358.838 13675.04</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $algorithm</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;If ENMO &lt;= 65.71: METS = 1.25&quot;                                                                                         </span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;If ENMO &gt; 65.71 AND ENMO_CV10s &lt;= 0.48: METs = 18.336 - 0.226 (ENMO)&quot;                                                  </span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;If ENMO &gt; 65.71 AND ENMO_CV10s &gt; 0.48: METs = 5306.279 - 216.4804 (ENMO) +   2.9170 (I(ENMO^2)) -   0.0129 (I(ENMO^3))&quot;</span></span></code></pre></div>
+<p>For the plot function, you’ll need to fill in some of the same values
+from the original call to <code>fit_2rm</code>. Use code that matches
+the following pattern:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="do">## You have to explicitly type `object = ` for this to work</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">object =</span> my_model,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_cp_activities =</span> <span class="fu">c</span>(fake_sed, fake_lpa),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_activities =</span> fake_sed,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_cpVar =</span> <span class="st">&quot;ENMO&quot;</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">activity_var =</span> <span class="st">&quot;Activity&quot;</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">met_var =</span> <span class="st">&quot;fake_METs&quot;</span>,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">walkrun_activities =</span> fake_cwr,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">walkrun_cpVar =</span> <span class="st">&quot;ENMO_CV10s&quot;</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">print =</span> <span class="cn">TRUE</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" width="85%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="using-new-models" class="section level2">
+<h2>USING NEW MODELS</h2>
+<p>Once you’ve created your model, you want to use it on new data.
+That’s easy to do using the <code>predict</code> method included in the
+package. If we pretend our <code>all_data</code> object is a new
+dataset, we could get predictions by running code like this:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>new_results <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_model, all_data)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(new_results)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     PID           Timestamp     ENMO Gyroscope_VM_DegPerS</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Test1 2015-11-12 15:45:00 91.81064            0.6985270</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Test1 2015-11-12 15:45:01 63.90690            0.6976330</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Test1 2015-11-12 15:45:02 63.70351            0.6806886</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Test1 2015-11-12 15:45:03 64.24208            0.6806373</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Test1 2015-11-12 15:45:04 63.70059            0.6926852</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Test1 2015-11-12 15:45:05 63.58346            0.6989126</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_x_DegPerS mean_abs_Gyroscope_y_DegPerS</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                    0.2207365                    0.5846348</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                    0.2344190                    0.5713514</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                    0.2176725                    0.5628797</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                    0.2382042                    0.5606505</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                    0.2274410                    0.5743000</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                    0.2290555                    0.5746244</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_z_DegPerS mean_magnetometer_direction   Activity fake_METs</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                    0.3059072                           S    Sitting  1.853070</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                    0.3203365                           S     Tennis  7.402845</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                    0.3101393                           S    Running  5.903824</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                    0.3001943                           S Basketball  2.685811</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                    0.3083593                           S    Running  6.890708</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                    0.3191014                           S    Sitting  1.253249</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ENMO_CV10s Classification    METs</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 13.3261509   intermittent 1.85306</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  0.6433354             SB 1.25000</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  0.6433354             SB 1.25000</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  0.6433354             SB 1.25000</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  0.6433354             SB 1.25000</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  0.6433354             SB 1.25000</span></span></code></pre></div>
+<p>When making predictions, you can specify <code>verbose = TRUE</code>
+if you want to print a message to the console about making predictions
+from your model. By default, it will say it’s making predictions using
+the ‘user_unspecified’ model. To give your model a name, you can assign
+a value to its <code>method</code> element. Consider the following:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>results_default <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_model, all_data, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Calculating EE using the &#39;user_unspecified&#39; two-regression model</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>my_model<span class="sc">$</span>method <span class="ot">&lt;-</span> <span class="st">&quot;My Customized 2RM&quot;</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>results_updated <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_model, all_data, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Calculating EE using the &#39;My Customized 2RM&#39; two-regression model</span></span></code></pre></div>
+<p>And, of course, you can collapse the estimates to a particular time
+granularity using <code>smooth_2rm</code> like this:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="do">## This code illustrates collapsing every 60 seconds. (This is the default</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="do">## period and also the typical recommendation, but you could do anything,</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="do">## e.g., &quot;10 sec&quot;, &quot;30 sec&quot;, or &quot;0.25 hour&quot;)</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>TwoRegression<span class="sc">::</span><span class="fu">smooth_2rm</span>(results_updated, <span class="st">&quot;Timestamp&quot;</span>, <span class="st">&quot;60 sec&quot;</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Timestamp   PID mean_magnetometer_direction   Activity     ENMO</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00 Test1                           S    Sitting 3955.371</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00 Test1                           S Basketball 3971.312</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00 Test1                           S    Walking 3970.534</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00 Test2                           S Basketball 3929.218</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00 Test2                           S    Running 3771.568</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Gyroscope_VM_DegPerS mean_abs_Gyroscope_x_DegPerS</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1             41.23766                     13.79911</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2             41.46834                     13.82252</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3             41.77129                     14.04145</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4             41.99182                     14.09534</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5             41.40131                     13.84211</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_y_DegPerS mean_abs_Gyroscope_z_DegPerS ENMO_CV10s</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                     33.78546                     18.90326  0.6910839</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                     33.91097                     19.15887  0.4586548</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                     34.32867                     18.90991  0.5657218</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                     34.66010                     18.75561  0.5590702</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                     34.23208                     18.42478  0.6726754</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   SB_epochs walkrun_epochs intermittent_epochs fake_METs     METs</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        28             26                   6  3.452270 2.398673</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2         8             35                  17  3.521533 3.139028</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3        10             19                  31  3.186677 3.128555</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4        41              4                  15  3.882197 2.001488</span></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5        59              0                   0  3.610416 1.250000</span></span></code></pre></div>
+</div>
+<div id="conclusion" class="section level2">
+<h2>CONCLUSION</h2>
+<p>That’s it. This has been a quick crash course in the core features
+and functions of the TwoRegression package. If you have questions or
+feedback, feel free to connect by <a href="https://github.com/paulhibbing/TwoRegression/issues/new">posting
+an issue on the TwoRegression GitHub page</a>. Happy coding!</p>
 </div>
 
+
+
+<!-- code folding -->
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

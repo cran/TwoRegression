@@ -1,13 +1,35 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Build Status](https://travis-ci.org/paulhibbing/TwoRegression.svg?branch=master)](https://travis-ci.org/paulhibbing/TwoRegression)
+-----
 
-Overview
---------
+[![minimal R
+version](https://img.shields.io/badge/R%3E%3D-3.1.0-6666ff.svg)](https://cran.r-project.org/)
 
-`TwoRegression` is a package designed to simplify the use of two-regression algorithms. The vignette ("TwoRegression") contains more specific information. To install the package and view the vignette, use:
+-----
+
+[![License](https://img.shields.io/badge/license-GPL-blue.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
+
+-----
+
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/TwoRegression)](https://cran.r-project.org/package=TwoRegression)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.1.2.9000-orange.svg?style=flat-square)](https://github.com/paulhibbing/TwoRegression/commits/main)
+
+-----
+
+# Overview
+
+`TwoRegression` is a package designed to simplify the development and
+application of two-regression models. The vignette called “TwoRegression”
+contains more specific information. To install from CRAN and view the
+vignette, use:
 
 ``` r
-# install.packages("TwoRegression")
-# vignette("TwoRegression")
+install.packages("TwoRegression")
+vignette("TwoRegression")
+```
+
+You can also install the development version from GitHub using:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("paulhibbing/TwoRegression")
 ```

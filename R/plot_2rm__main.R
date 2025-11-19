@@ -1,6 +1,6 @@
 .set_Theme <- theme_classic() +
-  theme(axis.line.x = element_line(size = .5),
-  axis.line.y = element_line(size = .5),
+  theme(axis.line.x = element_line(linewidth = .5),
+  axis.line.y = element_line(linewidth = .5),
   axis.title.x = element_text(size = 14, face = 'bold'),
   axis.text.x = element_text(size = 12),
   axis.title.y = element_text(size = 14, face = 'bold'),
@@ -155,13 +155,20 @@ plot.TwoRegression <- function(x = NULL, object = NULL, sed_cp_activities,
       gsub(object$sed_variable, "x",
         object$walkrun_formula))
 
-  plot3 <- ggplot(object$walkrun_data,
-    aes(eval(parse(text = object$sed_variable)),
-      eval(parse(text = met_var)))) +
-    geom_point() + .set_Theme +
-    geom_smooth(method = class(object$walkrun_model),
-      formula = smooth_formula, se = FALSE,
-      size = 1.2) +
+  plot3 <-
+    object$walkrun_data %>%
+    ggplot(aes(
+      eval(parse(text = object$sed_variable)),
+      eval(parse(text = met_var))
+    )) +
+    geom_point() +
+    .set_Theme +
+    geom_smooth(
+      method = class(object$walkrun_model),
+      formula = smooth_formula,
+      se = FALSE,
+      linewidth = 1.2
+    ) +
     scale_x_continuous(name = eval(object$sed_variable)) +
     scale_y_continuous(name = eval(met_var)) +
     ggtitle("Walk/Run Model")
@@ -172,13 +179,19 @@ plot.TwoRegression <- function(x = NULL, object = NULL, sed_cp_activities,
       gsub(object$sed_variable, "x",
         object$intermittent_formula))
 
-  plot4 <- ggplot(object$intermittent_data,
-    aes(eval(parse(text = object$sed_variable)),
-      eval(parse(text = met_var)))) +
-    geom_point() + .set_Theme +
-    geom_smooth(method = class(object$intermittent_model),
+  plot4 <-
+    object$intermittent_data %>%
+    ggplot(aes(
+      eval(parse(text = object$sed_variable)),
+      eval(parse(text = met_var))
+    )) +
+    geom_point() +
+    .set_Theme +
+    geom_smooth(
+      method = class(object$intermittent_model),
       formula = smooth_formula, se = FALSE,
-      size = 1.2) +
+      linewidth = 1.2
+    ) +
     scale_x_continuous(name = eval(object$sed_variable)) +
     scale_y_continuous(name = eval(met_var)) +
     ggtitle("Intermittent Activity Model")

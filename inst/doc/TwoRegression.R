@@ -4,12 +4,12 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-## ---- eval = FALSE------------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  
 #  ?TwoRegression::TwoRegression
 #  
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  
 #  if (!"remotes" %in% installed.packages)
 #    install.packages("remotes")
@@ -154,7 +154,7 @@ summary(
 )
 
 
-## ---- fig.align='center', fig.width=12, fig.height=6, out.width="85%"---------
+## ----fig.align='center', fig.width=12, fig.height=6, out.width="85%"----------
 
 ## You have to explicitly type `object = ` for this to work
 plot(

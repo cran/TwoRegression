@@ -30,26 +30,27 @@ document.addEventListener('DOMContentLoaded', function(e) {
 </script>
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
 
 
 <style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -63,55 +64,54 @@ pre > code.sourceCode { white-space: pre-wrap; }
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
-  { counter-reset: source-line 0; }
+{ counter-reset: source-line 0; }
 pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
+{ position: relative; left: -4em; counter-increment: source-line; }
 pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {   }
+{ }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -120,13 +120,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -384,8 +391,8 @@ gyroscope, or accelerometer, gyroscope, and magnetometer)</li>
 function documentation. It will help you understand what settings you
 need to provide in order to run a specific model correctly. To view the
 documentation, run the following:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>?TwoRegression<span class="sc">::</span>TwoRegression</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>?TwoRegression<span class="sc">::</span>TwoRegression</span></code></pre></div>
 <p>This will pull up a documentation page where you can see the syntax
 for calling the <code>TwoRegression</code> function. Importantly, the
 page also lists the syntax for several internal applicators (i.e.,
@@ -409,92 +416,92 @@ aware of all this from the get-go.</p>
 <p>The <code>TwoRegression</code> function operates under the assumption
 you already have data read into R. You can do this with the
 <code>AGread</code> package.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">&quot;remotes&quot;</span> <span class="sc">%in%</span> installed.packages)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">&quot;AGread&quot;</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>())</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;paulhibbing/AGread&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">&quot;remotes&quot;</span> <span class="sc">%in%</span> installed.packages)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">&quot;AGread&quot;</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>())</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;paulhibbing/AGread&quot;</span>)</span></code></pre></div>
 <p>For the sake of this illustration, the TwoRegression package provides
 some sample data we can use. If you can get your own data into a form
 that mirrors the sample data below, you’ll be in good shape. Here’s how
 to access it:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(count_data, <span class="at">package =</span> <span class="st">&quot;TwoRegression&quot;</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(all_data, <span class="at">package =</span> <span class="st">&quot;TwoRegression&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">data</span>(count_data, <span class="at">package =</span> <span class="st">&quot;TwoRegression&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">data</span>(all_data, <span class="at">package =</span> <span class="st">&quot;TwoRegression&quot;</span>)</span></code></pre></div>
 <p>The <code>count_data</code> object contains activity count data (for
 the Crouter two-regression models), while the <code>all_data</code>
 object contains raw sensor data (for the Hibbing models). We can view
 the first few rows of count data as follows:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(count_data)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:45:10     0     0     0                0</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:45:20     0     0     0                0</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:45:30     0     0     0                0</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:45:40     0     0     0                0</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2015-11-12 15:45:50     0     0     0                0</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(count_data)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:45:10     0     0     0                0</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:45:20     0     0     0                0</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:45:30     0     0     0                0</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:45:40     0     0     0                0</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; 6 2015-11-12 15:45:50     0     0     0                0</span></span></code></pre></div>
 <p>We can do the same using a similar approach for the raw data.
 However, let’s remove some extraneous variables first.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> all_data[ ,<span class="fu">setdiff</span>(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(all_data),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## These are the variables to remove:</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;file_source_PrimaryAccel&quot;</span>, <span class="st">&quot;date_processed_PrimaryAccel&quot;</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;file_source_IMU&quot;</span>, <span class="st">&quot;date_processed_IMU&quot;</span>, <span class="st">&quot;day_of_year&quot;</span>, <span class="st">&quot;minute_of_day&quot;</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Remove the following because they&#39;ll be recalculated later</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ENMO_CV10s&quot;</span>, <span class="st">&quot;GVM_CV10s&quot;</span>, <span class="st">&quot;Direction&quot;</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>)]</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(all_data)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    PID           Timestamp     ENMO Gyroscope_VM_DegPerS</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Test 2015-11-12 15:45:00 91.81064            0.6985270</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Test 2015-11-12 15:45:01 63.90690            0.6976330</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Test 2015-11-12 15:45:02 63.70351            0.6806886</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Test 2015-11-12 15:45:03 64.24208            0.6806373</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Test 2015-11-12 15:45:04 63.70059            0.6926852</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Test 2015-11-12 15:45:05 63.58346            0.6989126</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_x_DegPerS mean_abs_Gyroscope_y_DegPerS</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                    0.2207365                    0.5846348</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                    0.2344190                    0.5713514</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                    0.2176725                    0.5628797</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                    0.2382042                    0.5606505</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                    0.2274410                    0.5743000</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                    0.2290555                    0.5746244</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_z_DegPerS mean_magnetometer_direction</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                    0.3059072                           S</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                    0.3203365                           S</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                    0.3101393                           S</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                    0.3001943                           S</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                    0.3083593                           S</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                    0.3191014                           S</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> all_data[ ,<span class="fu">setdiff</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="fu">names</span>(all_data),</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>  <span class="do">## These are the variables to remove:</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>    <span class="st">&quot;file_source_PrimaryAccel&quot;</span>, <span class="st">&quot;date_processed_PrimaryAccel&quot;</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>    <span class="st">&quot;file_source_IMU&quot;</span>, <span class="st">&quot;date_processed_IMU&quot;</span>, <span class="st">&quot;day_of_year&quot;</span>, <span class="st">&quot;minute_of_day&quot;</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>    <span class="do">## Remove the following because they&#39;ll be recalculated later</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>    <span class="st">&quot;ENMO_CV10s&quot;</span>, <span class="st">&quot;GVM_CV10s&quot;</span>, <span class="st">&quot;Direction&quot;</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>  )</span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>)]</span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(all_data)</span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt;    PID           Timestamp     ENMO Gyroscope_VM_DegPerS</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; 1 Test 2015-11-12 15:45:00 91.81064            0.6985270</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt; 2 Test 2015-11-12 15:45:01 63.90690            0.6976330</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt; 3 Test 2015-11-12 15:45:02 63.70351            0.6806886</span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt; 4 Test 2015-11-12 15:45:03 64.24208            0.6806373</span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co">#&gt; 5 Test 2015-11-12 15:45:04 63.70059            0.6926852</span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#&gt; 6 Test 2015-11-12 15:45:05 63.58346            0.6989126</span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_x_DegPerS mean_abs_Gyroscope_y_DegPerS</span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co">#&gt; 1                    0.2207365                    0.5846348</span></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co">#&gt; 2                    0.2344190                    0.5713514</span></span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="co">#&gt; 3                    0.2176725                    0.5628797</span></span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co">#&gt; 4                    0.2382042                    0.5606505</span></span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="co">#&gt; 5                    0.2274410                    0.5743000</span></span>
+<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="co">#&gt; 6                    0.2290555                    0.5746244</span></span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_z_DegPerS mean_magnetometer_direction</span></span>
+<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="co">#&gt; 1                    0.3059072                           S</span></span>
+<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="co">#&gt; 2                    0.3203365                           S</span></span>
+<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="co">#&gt; 3                    0.3101393                           S</span></span>
+<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="co">#&gt; 4                    0.3001943                           S</span></span>
+<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a><span class="co">#&gt; 5                    0.3083593                           S</span></span>
+<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="co">#&gt; 6                    0.3191014                           S</span></span></code></pre></div>
 </div>
 <div id="applying-crouter-models-for-activity-count-data" class="section level4">
 <h4>Applying Crouter models (for activity count data)</h4>
 <p>Once you have your dataset ready, it’s easy to apply a two-regression
 model. Just invoke the <code>TwoRegression</code> function like
 this:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>crouter2006_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  count_data, <span class="st">&quot;Crouter 2006&quot;</span>, <span class="at">movement_var =</span> <span class="st">&quot;Axis1&quot;</span>, <span class="at">time_var =</span> <span class="st">&quot;time&quot;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>crouter2010_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  count_data, <span class="st">&quot;Crouter 2010&quot;</span>, <span class="at">movement_var =</span> <span class="st">&quot;Axis1&quot;</span>, <span class="at">time_var =</span> <span class="st">&quot;time&quot;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>crouter2012_va_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  count_data, <span class="st">&quot;Crouter 2012&quot;</span>, <span class="at">movement_var =</span> <span class="st">&quot;Axis1&quot;</span>,</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">time_var =</span> <span class="st">&quot;time&quot;</span>, <span class="at">model =</span> <span class="st">&quot;VA&quot;</span>, <span class="at">check =</span> <span class="cn">FALSE</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>crouter2012_vm_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  count_data, <span class="st">&quot;Crouter 2012&quot;</span>, <span class="at">movement_var =</span> <span class="st">&quot;Vector.Magnitude&quot;</span>,</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">time_var =</span> <span class="st">&quot;time&quot;</span>, <span class="at">model =</span> <span class="st">&quot;VM&quot;</span>, <span class="at">check =</span> <span class="cn">FALSE</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>crouter2006_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  count_data, <span class="st">&quot;Crouter 2006&quot;</span>, <span class="at">movement_var =</span> <span class="st">&quot;Axis1&quot;</span>, <span class="at">time_var =</span> <span class="st">&quot;time&quot;</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>)</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>crouter2010_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  count_data, <span class="st">&quot;Crouter 2010&quot;</span>, <span class="at">movement_var =</span> <span class="st">&quot;Axis1&quot;</span>, <span class="at">time_var =</span> <span class="st">&quot;time&quot;</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>)</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>crouter2012_va_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>  count_data, <span class="st">&quot;Crouter 2012&quot;</span>, <span class="at">movement_var =</span> <span class="st">&quot;Axis1&quot;</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>  <span class="at">time_var =</span> <span class="st">&quot;time&quot;</span>, <span class="at">model =</span> <span class="st">&quot;VA&quot;</span>, <span class="at">check =</span> <span class="cn">FALSE</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>)</span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a>crouter2012_vm_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a>  count_data, <span class="st">&quot;Crouter 2012&quot;</span>, <span class="at">movement_var =</span> <span class="st">&quot;Vector.Magnitude&quot;</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a>  <span class="at">time_var =</span> <span class="st">&quot;time&quot;</span>, <span class="at">model =</span> <span class="st">&quot;VM&quot;</span>, <span class="at">check =</span> <span class="cn">FALSE</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>)</span></code></pre></div>
 <p>For the Crouter 2012 models, you have to choose between the vertical
 axis model and the vector magnitude model. If you don’t set
 <code>check = FALSE</code>, you will get a warning about which movement
@@ -509,59 +516,59 @@ this can be done automatically and efficiently (see the <a href="https://github.
 issue on this topic</a>), but for now it isn’t built in. As we’ll see in
 the following subsection, though, it <em>is</em> doable for the Hibbing
 models. Here’s a look at the output from the prior commands:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(crouter2006_results)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude   cv_10 Classification</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410 244.949   intermittent</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00     0     0     0                0   0.000             SB</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00     0     0     0                0   0.000             SB</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00     0     0     0                0   0.000             SB</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00     0     0     0                0   0.000             SB</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       METs</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2.446791</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 1.000000</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 1.000000</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 1.000000</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 1.000000</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(crouter2010_results)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude mean_cv_10 SB_epochs</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410   40.82483         5</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00     0     0     0                0    0.00000         6</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00     0     0     0                0    0.00000         6</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00     0     0     0                0    0.00000         6</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00     0     0     0                0    0.00000         6</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   walkrun_epochs intermittent_epochs    METs</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1              0                   1 1.28234</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2              0                   0 1.00000</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3              0                   0 1.00000</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4              0                   0 1.00000</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5              0                   0 1.00000</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(crouter2012_va_results)</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude mean_cv_10 SB_epochs</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410   40.82483         5</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00     0     0     0                0    0.00000         6</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00     0     0     0                0    0.00000         6</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00     0     0     0                0    0.00000         6</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00     0     0     0                0    0.00000         6</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   walkrun_epochs intermittent_epochs    METs</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1              0                   1 1.34108</span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2              0                   0 1.00000</span></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3              0                   0 1.00000</span></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4              0                   0 1.00000</span></span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5              0                   0 1.00000</span></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(crouter2012_vm_results)</span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude mean_cv_10 SB_epochs</span></span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410   40.82483         5</span></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00     0     0     0                0    0.00000         6</span></span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00     0     0     0                0    0.00000         6</span></span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00     0     0     0                0    0.00000         6</span></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00     0     0     0                0    0.00000         6</span></span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   walkrun_epochs intermittent_epochs     METs</span></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1              0                   1 1.368691</span></span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2              0                   0 1.000000</span></span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3              0                   0 1.000000</span></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4              0                   0 1.000000</span></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5              0                   0 1.000000</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(crouter2006_results)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude   cv_10 Classification</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410 244.949   intermittent</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00     0     0     0                0   0.000             SB</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00     0     0     0                0   0.000             SB</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00     0     0     0                0   0.000             SB</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00     0     0     0                0   0.000             SB</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt;       METs</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; 1 2.446791</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt; 2 1.000000</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt; 3 1.000000</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; 4 1.000000</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; 5 1.000000</span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(crouter2010_results)</span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude mean_cv_10 SB_epochs</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410   40.82483         5</span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="co">#&gt;   walkrun_epochs intermittent_epochs    METs</span></span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="co">#&gt; 1              0                   1 1.28234</span></span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="co">#&gt; 2              0                   0 1.00000</span></span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="co">#&gt; 3              0                   0 1.00000</span></span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="co">#&gt; 4              0                   0 1.00000</span></span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="co">#&gt; 5              0                   0 1.00000</span></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(crouter2012_va_results)</span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude mean_cv_10 SB_epochs</span></span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410   40.82483         5</span></span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-35"><a href="#cb7-35" tabindex="-1"></a><span class="co">#&gt;   walkrun_epochs intermittent_epochs    METs</span></span>
+<span id="cb7-36"><a href="#cb7-36" tabindex="-1"></a><span class="co">#&gt; 1              0                   1 1.34108</span></span>
+<span id="cb7-37"><a href="#cb7-37" tabindex="-1"></a><span class="co">#&gt; 2              0                   0 1.00000</span></span>
+<span id="cb7-38"><a href="#cb7-38" tabindex="-1"></a><span class="co">#&gt; 3              0                   0 1.00000</span></span>
+<span id="cb7-39"><a href="#cb7-39" tabindex="-1"></a><span class="co">#&gt; 4              0                   0 1.00000</span></span>
+<span id="cb7-40"><a href="#cb7-40" tabindex="-1"></a><span class="co">#&gt; 5              0                   0 1.00000</span></span>
+<span id="cb7-41"><a href="#cb7-41" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(crouter2012_vm_results)</span>
+<span id="cb7-42"><a href="#cb7-42" tabindex="-1"></a><span class="co">#&gt;                  time Axis1 Axis2 Axis3 Vector.Magnitude mean_cv_10 SB_epochs</span></span>
+<span id="cb7-43"><a href="#cb7-43" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00    71   284   287              410   40.82483         5</span></span>
+<span id="cb7-44"><a href="#cb7-44" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-45"><a href="#cb7-45" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-46"><a href="#cb7-46" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-47"><a href="#cb7-47" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00     0     0     0                0    0.00000         6</span></span>
+<span id="cb7-48"><a href="#cb7-48" tabindex="-1"></a><span class="co">#&gt;   walkrun_epochs intermittent_epochs     METs</span></span>
+<span id="cb7-49"><a href="#cb7-49" tabindex="-1"></a><span class="co">#&gt; 1              0                   1 1.368691</span></span>
+<span id="cb7-50"><a href="#cb7-50" tabindex="-1"></a><span class="co">#&gt; 2              0                   0 1.000000</span></span>
+<span id="cb7-51"><a href="#cb7-51" tabindex="-1"></a><span class="co">#&gt; 3              0                   0 1.000000</span></span>
+<span id="cb7-52"><a href="#cb7-52" tabindex="-1"></a><span class="co">#&gt; 4              0                   0 1.000000</span></span>
+<span id="cb7-53"><a href="#cb7-53" tabindex="-1"></a><span class="co">#&gt; 5              0                   0 1.000000</span></span></code></pre></div>
 </div>
 <div id="applying-hibbing-models-for-raw-sensor-data" class="section level4">
 <h4>Applying Hibbing models (for raw sensor data)</h4>
@@ -569,111 +576,111 @@ models. Here’s a look at the output from the prior commands:</p>
 key difference, though, is that you can ask the function to run multiple
 models simultaneously. That’s what we’ll see in the following
 example:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>hibbing2018_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  all_data, <span class="st">&quot;Hibbing 2018&quot;</span>, <span class="at">accel_var =</span> <span class="st">&quot;ENMO&quot;</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">gyro_var =</span> <span class="st">&quot;Gyroscope_VM_DegPerS&quot;</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction_var =</span> <span class="st">&quot;mean_magnetometer_direction&quot;</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Here is where we can select an algorithm from multiple sites:</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">site =</span> <span class="fu">c</span>(<span class="st">&quot;Left Ankle&quot;</span>, <span class="st">&quot;Right Ankle&quot;</span>),</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## And here is where we can select multiple algorithms</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="do">## (1 = accelerometer only; 2 = accelerometer and gyroscope;</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 3 = accelerometer, gyroscope, and magnetometer)</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">algorithm =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="do">## We can also ask the function to collapse data every minute by making an</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="do">## extra call to `smooth_2rm`</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">smooth =</span> <span class="cn">TRUE</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(hibbing2018_results)</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Timestamp  PID mean_magnetometer_direction     ENMO</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00 Test                           S 3955.371</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00 Test                           S 3971.312</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00 Test                           S 3970.534</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00 Test                           S 3929.218</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00 Test                           S 3771.568</span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Gyroscope_VM_DegPerS mean_abs_Gyroscope_x_DegPerS</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1             41.23766                     13.79911</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2             41.46834                     13.82252</span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3             41.77129                     14.04145</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4             41.99182                     14.09534</span></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5             41.40131                     13.84211</span></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_y_DegPerS mean_abs_Gyroscope_z_DegPerS ENMO_CV10s</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                     33.78546                     18.90326  0.6910839</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                     33.91097                     19.15887  0.4586548</span></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                     34.32867                     18.90991  0.5657218</span></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                     34.66010                     18.75561  0.5590702</span></span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                     34.23208                     18.42478  0.6726754</span></span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   GVM_CV10s Left_Ankle_Algorithm1_SB_epochs</span></span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.8023038                               0</span></span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 0.7353243                               0</span></span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 0.7774376                               0</span></span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 0.7712045                               0</span></span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 0.7228010                               0</span></span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Left_Ankle_Algorithm1_walkrun_epochs</span></span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                   60</span></span>
-<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                   60</span></span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                   60</span></span>
-<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                   60</span></span>
-<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                   59</span></span>
-<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Left_Ankle_Algorithm1_intermittent_epochs Right_Ankle_Algorithm1_SB_epochs</span></span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                         0                                0</span></span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                         0                                0</span></span>
-<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                         0                                0</span></span>
-<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                         0                                0</span></span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                         0                                0</span></span>
-<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm1_walkrun_epochs</span></span>
-<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                    60</span></span>
-<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                    60</span></span>
-<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                    60</span></span>
-<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                    60</span></span>
-<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                    59</span></span>
-<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm1_intermittent_epochs Left_Ankle_Algorithm2_SB_epochs</span></span>
-<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                          0                              60</span></span>
-<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                          0                              60</span></span>
-<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                          0                              60</span></span>
-<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                          0                              60</span></span>
-<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                          0                              59</span></span>
-<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Left_Ankle_Algorithm2_walkrun_epochs</span></span>
-<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                    0</span></span>
-<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                    0</span></span>
-<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                    0</span></span>
-<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                    0</span></span>
-<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                    0</span></span>
-<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Left_Ankle_Algorithm2_intermittent_epochs Right_Ankle_Algorithm2_SB_epochs</span></span>
-<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                         0                               60</span></span>
-<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                         0                               60</span></span>
-<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                         0                               60</span></span>
-<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                         0                               60</span></span>
-<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                         0                               59</span></span>
-<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm2_walkrun_epochs</span></span>
-<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                     0</span></span>
-<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                     0</span></span>
-<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                     0</span></span>
-<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                     0</span></span>
-<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                     0</span></span>
-<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm2_intermittent_epochs Left_Ankle_Algorithm1_METs</span></span>
-<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                                          0                   2.732142</span></span>
-<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                          0                   2.733321</span></span>
-<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                                          0                   2.733263</span></span>
-<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                          0                   2.730209</span></span>
-<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                                          0                   2.723279</span></span>
-<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm1_METs Left_Ankle_Algorithm2_METs</span></span>
-<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                    2.463901                       1.25</span></span>
-<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                    2.465122                       1.25</span></span>
-<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                    2.465063                       1.25</span></span>
-<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                    2.461897                       1.25</span></span>
-<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                    2.454716                       1.25</span></span>
-<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm2_METs</span></span>
-<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                        1.25</span></span>
-<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                        1.25</span></span>
-<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                        1.25</span></span>
-<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                        1.25</span></span>
-<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                        1.25</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>hibbing2018_results <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">TwoRegression</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  </span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  all_data, <span class="st">&quot;Hibbing 2018&quot;</span>, <span class="at">accel_var =</span> <span class="st">&quot;ENMO&quot;</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="at">gyro_var =</span> <span class="st">&quot;Gyroscope_VM_DegPerS&quot;</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  <span class="at">direction_var =</span> <span class="st">&quot;mean_magnetometer_direction&quot;</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  </span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  <span class="do">## Here is where we can select an algorithm from multiple sites:</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>  <span class="at">site =</span> <span class="fu">c</span>(<span class="st">&quot;Left Ankle&quot;</span>, <span class="st">&quot;Right Ankle&quot;</span>),</span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>  </span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>  <span class="do">## And here is where we can select multiple algorithms</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>  <span class="do">## (1 = accelerometer only; 2 = accelerometer and gyroscope;</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>  <span class="do">## 3 = accelerometer, gyroscope, and magnetometer)</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>  <span class="at">algorithm =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a>  </span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a>  <span class="do">## We can also ask the function to collapse data every minute by making an</span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a>  <span class="do">## extra call to `smooth_2rm`</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a>  <span class="at">smooth =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a>)</span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(hibbing2018_results)</span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="co">#&gt;             Timestamp  PID mean_magnetometer_direction     ENMO</span></span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00 Test                           S 3955.371</span></span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00 Test                           S 3971.312</span></span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00 Test                           S 3970.534</span></span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00 Test                           S 3929.218</span></span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00 Test                           S 3771.568</span></span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="co">#&gt;   Gyroscope_VM_DegPerS mean_abs_Gyroscope_x_DegPerS</span></span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="co">#&gt; 1             41.23766                     13.79911</span></span>
+<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="co">#&gt; 2             41.46834                     13.82252</span></span>
+<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="co">#&gt; 3             41.77129                     14.04145</span></span>
+<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="co">#&gt; 4             41.99182                     14.09534</span></span>
+<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="co">#&gt; 5             41.40131                     13.84211</span></span>
+<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_y_DegPerS mean_abs_Gyroscope_z_DegPerS ENMO_CV10s</span></span>
+<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="co">#&gt; 1                     33.78546                     18.90326  0.6910839</span></span>
+<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="co">#&gt; 2                     33.91097                     19.15887  0.4586548</span></span>
+<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="co">#&gt; 3                     34.32867                     18.90991  0.5657218</span></span>
+<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="co">#&gt; 4                     34.66010                     18.75561  0.5590702</span></span>
+<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="co">#&gt; 5                     34.23208                     18.42478  0.6726754</span></span>
+<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="co">#&gt;   GVM_CV10s Left_Ankle_Algorithm1_SB_epochs</span></span>
+<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a><span class="co">#&gt; 1 0.8023038                               0</span></span>
+<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a><span class="co">#&gt; 2 0.7353243                               0</span></span>
+<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a><span class="co">#&gt; 3 0.7774376                               0</span></span>
+<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a><span class="co">#&gt; 4 0.7712045                               0</span></span>
+<span id="cb8-45"><a href="#cb8-45" tabindex="-1"></a><span class="co">#&gt; 5 0.7228010                               0</span></span>
+<span id="cb8-46"><a href="#cb8-46" tabindex="-1"></a><span class="co">#&gt;   Left_Ankle_Algorithm1_walkrun_epochs</span></span>
+<span id="cb8-47"><a href="#cb8-47" tabindex="-1"></a><span class="co">#&gt; 1                                   60</span></span>
+<span id="cb8-48"><a href="#cb8-48" tabindex="-1"></a><span class="co">#&gt; 2                                   60</span></span>
+<span id="cb8-49"><a href="#cb8-49" tabindex="-1"></a><span class="co">#&gt; 3                                   60</span></span>
+<span id="cb8-50"><a href="#cb8-50" tabindex="-1"></a><span class="co">#&gt; 4                                   60</span></span>
+<span id="cb8-51"><a href="#cb8-51" tabindex="-1"></a><span class="co">#&gt; 5                                   59</span></span>
+<span id="cb8-52"><a href="#cb8-52" tabindex="-1"></a><span class="co">#&gt;   Left_Ankle_Algorithm1_intermittent_epochs Right_Ankle_Algorithm1_SB_epochs</span></span>
+<span id="cb8-53"><a href="#cb8-53" tabindex="-1"></a><span class="co">#&gt; 1                                         0                                0</span></span>
+<span id="cb8-54"><a href="#cb8-54" tabindex="-1"></a><span class="co">#&gt; 2                                         0                                0</span></span>
+<span id="cb8-55"><a href="#cb8-55" tabindex="-1"></a><span class="co">#&gt; 3                                         0                                0</span></span>
+<span id="cb8-56"><a href="#cb8-56" tabindex="-1"></a><span class="co">#&gt; 4                                         0                                0</span></span>
+<span id="cb8-57"><a href="#cb8-57" tabindex="-1"></a><span class="co">#&gt; 5                                         0                                0</span></span>
+<span id="cb8-58"><a href="#cb8-58" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm1_walkrun_epochs</span></span>
+<span id="cb8-59"><a href="#cb8-59" tabindex="-1"></a><span class="co">#&gt; 1                                    60</span></span>
+<span id="cb8-60"><a href="#cb8-60" tabindex="-1"></a><span class="co">#&gt; 2                                    60</span></span>
+<span id="cb8-61"><a href="#cb8-61" tabindex="-1"></a><span class="co">#&gt; 3                                    60</span></span>
+<span id="cb8-62"><a href="#cb8-62" tabindex="-1"></a><span class="co">#&gt; 4                                    60</span></span>
+<span id="cb8-63"><a href="#cb8-63" tabindex="-1"></a><span class="co">#&gt; 5                                    59</span></span>
+<span id="cb8-64"><a href="#cb8-64" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm1_intermittent_epochs Left_Ankle_Algorithm2_SB_epochs</span></span>
+<span id="cb8-65"><a href="#cb8-65" tabindex="-1"></a><span class="co">#&gt; 1                                          0                              60</span></span>
+<span id="cb8-66"><a href="#cb8-66" tabindex="-1"></a><span class="co">#&gt; 2                                          0                              60</span></span>
+<span id="cb8-67"><a href="#cb8-67" tabindex="-1"></a><span class="co">#&gt; 3                                          0                              60</span></span>
+<span id="cb8-68"><a href="#cb8-68" tabindex="-1"></a><span class="co">#&gt; 4                                          0                              60</span></span>
+<span id="cb8-69"><a href="#cb8-69" tabindex="-1"></a><span class="co">#&gt; 5                                          0                              59</span></span>
+<span id="cb8-70"><a href="#cb8-70" tabindex="-1"></a><span class="co">#&gt;   Left_Ankle_Algorithm2_walkrun_epochs</span></span>
+<span id="cb8-71"><a href="#cb8-71" tabindex="-1"></a><span class="co">#&gt; 1                                    0</span></span>
+<span id="cb8-72"><a href="#cb8-72" tabindex="-1"></a><span class="co">#&gt; 2                                    0</span></span>
+<span id="cb8-73"><a href="#cb8-73" tabindex="-1"></a><span class="co">#&gt; 3                                    0</span></span>
+<span id="cb8-74"><a href="#cb8-74" tabindex="-1"></a><span class="co">#&gt; 4                                    0</span></span>
+<span id="cb8-75"><a href="#cb8-75" tabindex="-1"></a><span class="co">#&gt; 5                                    0</span></span>
+<span id="cb8-76"><a href="#cb8-76" tabindex="-1"></a><span class="co">#&gt;   Left_Ankle_Algorithm2_intermittent_epochs Right_Ankle_Algorithm2_SB_epochs</span></span>
+<span id="cb8-77"><a href="#cb8-77" tabindex="-1"></a><span class="co">#&gt; 1                                         0                               60</span></span>
+<span id="cb8-78"><a href="#cb8-78" tabindex="-1"></a><span class="co">#&gt; 2                                         0                               60</span></span>
+<span id="cb8-79"><a href="#cb8-79" tabindex="-1"></a><span class="co">#&gt; 3                                         0                               60</span></span>
+<span id="cb8-80"><a href="#cb8-80" tabindex="-1"></a><span class="co">#&gt; 4                                         0                               60</span></span>
+<span id="cb8-81"><a href="#cb8-81" tabindex="-1"></a><span class="co">#&gt; 5                                         0                               59</span></span>
+<span id="cb8-82"><a href="#cb8-82" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm2_walkrun_epochs</span></span>
+<span id="cb8-83"><a href="#cb8-83" tabindex="-1"></a><span class="co">#&gt; 1                                     0</span></span>
+<span id="cb8-84"><a href="#cb8-84" tabindex="-1"></a><span class="co">#&gt; 2                                     0</span></span>
+<span id="cb8-85"><a href="#cb8-85" tabindex="-1"></a><span class="co">#&gt; 3                                     0</span></span>
+<span id="cb8-86"><a href="#cb8-86" tabindex="-1"></a><span class="co">#&gt; 4                                     0</span></span>
+<span id="cb8-87"><a href="#cb8-87" tabindex="-1"></a><span class="co">#&gt; 5                                     0</span></span>
+<span id="cb8-88"><a href="#cb8-88" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm2_intermittent_epochs Left_Ankle_Algorithm1_METs</span></span>
+<span id="cb8-89"><a href="#cb8-89" tabindex="-1"></a><span class="co">#&gt; 1                                          0                   2.732142</span></span>
+<span id="cb8-90"><a href="#cb8-90" tabindex="-1"></a><span class="co">#&gt; 2                                          0                   2.733321</span></span>
+<span id="cb8-91"><a href="#cb8-91" tabindex="-1"></a><span class="co">#&gt; 3                                          0                   2.733263</span></span>
+<span id="cb8-92"><a href="#cb8-92" tabindex="-1"></a><span class="co">#&gt; 4                                          0                   2.730209</span></span>
+<span id="cb8-93"><a href="#cb8-93" tabindex="-1"></a><span class="co">#&gt; 5                                          0                   2.723279</span></span>
+<span id="cb8-94"><a href="#cb8-94" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm1_METs Left_Ankle_Algorithm2_METs</span></span>
+<span id="cb8-95"><a href="#cb8-95" tabindex="-1"></a><span class="co">#&gt; 1                    2.463901                       1.25</span></span>
+<span id="cb8-96"><a href="#cb8-96" tabindex="-1"></a><span class="co">#&gt; 2                    2.465122                       1.25</span></span>
+<span id="cb8-97"><a href="#cb8-97" tabindex="-1"></a><span class="co">#&gt; 3                    2.465063                       1.25</span></span>
+<span id="cb8-98"><a href="#cb8-98" tabindex="-1"></a><span class="co">#&gt; 4                    2.461897                       1.25</span></span>
+<span id="cb8-99"><a href="#cb8-99" tabindex="-1"></a><span class="co">#&gt; 5                    2.454716                       1.25</span></span>
+<span id="cb8-100"><a href="#cb8-100" tabindex="-1"></a><span class="co">#&gt;   Right_Ankle_Algorithm2_METs</span></span>
+<span id="cb8-101"><a href="#cb8-101" tabindex="-1"></a><span class="co">#&gt; 1                        1.25</span></span>
+<span id="cb8-102"><a href="#cb8-102" tabindex="-1"></a><span class="co">#&gt; 2                        1.25</span></span>
+<span id="cb8-103"><a href="#cb8-103" tabindex="-1"></a><span class="co">#&gt; 3                        1.25</span></span>
+<span id="cb8-104"><a href="#cb8-104" tabindex="-1"></a><span class="co">#&gt; 4                        1.25</span></span>
+<span id="cb8-105"><a href="#cb8-105" tabindex="-1"></a><span class="co">#&gt; 5                        1.25</span></span></code></pre></div>
 <p>So, each algorithm is run, and the information is stored in a unique
 and descriptive variable name.</p>
 </div>
@@ -690,23 +697,23 @@ label it with some pretend activity labels and energy expenditure values
 (METs). In a real-life setting, the MET values would likely come from
 indirect calorimetry. To create some of this imaginary data, we can run
 the following:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">307</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>fake_sed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Lying&quot;</span>, <span class="st">&quot;Sitting&quot;</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>fake_lpa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Sweeping&quot;</span>, <span class="st">&quot;Dusting&quot;</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>fake_cwr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Walking&quot;</span>, <span class="st">&quot;Running&quot;</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>fake_ila <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Tennis&quot;</span>, <span class="st">&quot;Basketball&quot;</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>fake_activities <span class="ot">&lt;-</span> <span class="fu">c</span>(fake_sed, fake_lpa, fake_cwr, fake_ila)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>all_data<span class="sc">$</span>Activity <span class="ot">&lt;-</span> <span class="fu">sample</span>(fake_activities, <span class="fu">nrow</span>(all_data), <span class="cn">TRUE</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>all_data<span class="sc">$</span>fake_METs <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  all_data<span class="sc">$</span>Activity <span class="sc">%in%</span> <span class="fu">c</span>(fake_sed, fake_lpa),</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">runif</span>(<span class="fu">nrow</span>(all_data), <span class="dv">1</span>, <span class="dv">2</span>),</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">runif</span>(<span class="fu">nrow</span>(all_data), <span class="fl">2.5</span>, <span class="dv">8</span>)</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">307</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>fake_sed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Lying&quot;</span>, <span class="st">&quot;Sitting&quot;</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>fake_lpa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Sweeping&quot;</span>, <span class="st">&quot;Dusting&quot;</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>fake_cwr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Walking&quot;</span>, <span class="st">&quot;Running&quot;</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>fake_ila <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Tennis&quot;</span>, <span class="st">&quot;Basketball&quot;</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>fake_activities <span class="ot">&lt;-</span> <span class="fu">c</span>(fake_sed, fake_lpa, fake_cwr, fake_ila)</span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>all_data<span class="sc">$</span>Activity <span class="ot">&lt;-</span> <span class="fu">sample</span>(fake_activities, <span class="fu">nrow</span>(all_data), <span class="cn">TRUE</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>all_data<span class="sc">$</span>fake_METs <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>  all_data<span class="sc">$</span>Activity <span class="sc">%in%</span> <span class="fu">c</span>(fake_sed, fake_lpa),</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>  <span class="fu">runif</span>(<span class="fu">nrow</span>(all_data), <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a>  <span class="fu">runif</span>(<span class="fu">nrow</span>(all_data), <span class="fl">2.5</span>, <span class="dv">8</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>)</span></code></pre></div>
 <p>For this demonstration, a couple of extra hacks are needed, which
 would be much more natural to handle with real data. Still, they’re
 helpful to see. First, we need to make sure our dataset has a column
@@ -720,13 +727,13 @@ convenient it is to calculate CV in the TwoRegression package.There were
 also some technical reasons for deleting the variables earlier, but
 nevermind that (see <a href="https://github.com/paulhibbing/TwoRegression/issues/2">another
 GitHub issue</a> if you’re curious).</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>all_data<span class="sc">$</span>PID <span class="ot">&lt;-</span> <span class="fu">rep</span>(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Test1&quot;</span>, <span class="st">&quot;Test2&quot;</span>),</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">each =</span> <span class="fu">ceiling</span>(<span class="fu">nrow</span>(all_data) <span class="sc">/</span> <span class="dv">2</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)[<span class="fu">seq</span>(<span class="fu">nrow</span>(all_data))]</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>all_data<span class="sc">$</span>ENMO_CV10s <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">cv_2rm</span>(all_data<span class="sc">$</span>ENMO)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>all_data<span class="sc">$</span>PID <span class="ot">&lt;-</span> <span class="fu">rep</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Test1&quot;</span>, <span class="st">&quot;Test2&quot;</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="at">each =</span> <span class="fu">ceiling</span>(<span class="fu">nrow</span>(all_data) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>)[<span class="fu">seq</span>(<span class="fu">nrow</span>(all_data))]</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>all_data<span class="sc">$</span>ENMO_CV10s <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">cv_2rm</span>(all_data<span class="sc">$</span>ENMO)</span></code></pre></div>
 </div>
 <div id="fitting-the-model" class="section level4">
 <h4>Fitting the Model</h4>
@@ -765,20 +772,20 @@ lifestyle activities model (formulated like <code>walkrun_formula</code>
 wrapped in <code>I()</code>)</li>
 </ul>
 <p>From there, we can fit our model like this:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>my_model <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">fit_2rm</span>(</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> all_data,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">activity_var =</span> <span class="st">&quot;Activity&quot;</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_cp_activities =</span> <span class="fu">c</span>(fake_sed, fake_lpa),</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_activities =</span> fake_sed,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_cp_var =</span> <span class="st">&quot;ENMO&quot;</span>,</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_METs =</span> <span class="fl">1.25</span>,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">walkrun_activities =</span> fake_cwr,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">walkrun_cp_var =</span> <span class="st">&quot;ENMO_CV10s&quot;</span>,</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">met_var =</span> <span class="st">&quot;fake_METs&quot;</span>,</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">walkrun_formula =</span> <span class="st">&quot;fake_METs ~ ENMO&quot;</span>,</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">intermittent_formula =</span> <span class="st">&quot;fake_METs ~ ENMO + I(ENMO^2) + I(ENMO^3)&quot;</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>my_model <span class="ot">&lt;-</span> TwoRegression<span class="sc">::</span><span class="fu">fit_2rm</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="at">data =</span> all_data,</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  <span class="at">activity_var =</span> <span class="st">&quot;Activity&quot;</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  <span class="at">sed_cp_activities =</span> <span class="fu">c</span>(fake_sed, fake_lpa),</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  <span class="at">sed_activities =</span> fake_sed,</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  <span class="at">sed_cp_var =</span> <span class="st">&quot;ENMO&quot;</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  <span class="at">sed_METs =</span> <span class="fl">1.25</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>  <span class="at">walkrun_activities =</span> fake_cwr,</span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>  <span class="at">walkrun_cp_var =</span> <span class="st">&quot;ENMO_CV10s&quot;</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>  <span class="at">met_var =</span> <span class="st">&quot;fake_METs&quot;</span>,</span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a>  <span class="at">walkrun_formula =</span> <span class="st">&quot;fake_METs ~ ENMO&quot;</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a>  <span class="at">intermittent_formula =</span> <span class="st">&quot;fake_METs ~ ENMO + I(ENMO^2) + I(ENMO^3)&quot;</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="examining-model-performance" class="section level4">
 <h4>Examining Model Performance</h4>
@@ -795,58 +802,58 @@ Other information in the output includes a textual representation of the
 overall algorithm and summaries of the fit/performance of individual
 components (i.e., ROC and regression analyses). To pull all of this up,
 you just have to run code that matches the following pattern:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  my_model,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject_var =</span> <span class="st">&quot;PID&quot;</span>,</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">MET_var =</span> <span class="st">&quot;fake_METs&quot;</span>,</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">activity_var =</span> <span class="st">&quot;Activity&quot;</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $cut_points</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $cut_points$sedentary_ENMO</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   threshold specificity sensitivity </span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  65.7094366   0.5068493   0.5362319 </span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $cut_points$walk_run_ENMO</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   threshold specificity sensitivity </span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.4777372   0.5777778   0.5185185 </span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $regression_models</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $regression_models$walk_run</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            formula adj.r.squared      see</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 fake_METs ~ ENMO   -0.01142529 2.264023</span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $regression_models$intermittent_activity</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                    formula adj.r.squared      see</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 fake_METs ~ ENMO + I(ENMO^2) + I(ENMO^3)   -0.03106764 2.152466</span></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $leave_one_out</span></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       RMSE     MAPE</span></span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 4358.838 13675.04</span></span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $algorithm</span></span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;If ENMO &lt;= 65.71: METS = 1.25&quot;                                                                                         </span></span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;If ENMO &gt; 65.71 AND ENMO_CV10s &lt;= 0.48: METs = 18.336 - 0.226 (ENMO)&quot;                                                  </span></span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;If ENMO &gt; 65.71 AND ENMO_CV10s &gt; 0.48: METs = 5306.279 - 216.4804 (ENMO) +   2.9170 (I(ENMO^2)) -   0.0129 (I(ENMO^3))&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">summary</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  my_model,</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="at">subject_var =</span> <span class="st">&quot;PID&quot;</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="at">MET_var =</span> <span class="st">&quot;fake_METs&quot;</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>  <span class="at">activity_var =</span> <span class="st">&quot;Activity&quot;</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>)</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co">#&gt; $cut_points</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co">#&gt; $cut_points$sedentary_ENMO</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#&gt;   threshold specificity sensitivity </span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#&gt;  65.7094366   0.5068493   0.5362319 </span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co">#&gt; $cut_points$walk_run_ENMO</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#&gt;   threshold specificity sensitivity </span></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co">#&gt;   0.4777372   0.5777778   0.5185185 </span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="co">#&gt; $regression_models</span></span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a><span class="co">#&gt; $regression_models$walk_run</span></span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a><span class="co">#&gt;            formula adj.r.squared      see</span></span>
+<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a><span class="co">#&gt; 1 fake_METs ~ ENMO   -0.01142529 2.264023</span></span>
+<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a><span class="co">#&gt; $regression_models$intermittent_activity</span></span>
+<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a><span class="co">#&gt;                                    formula adj.r.squared      see</span></span>
+<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a><span class="co">#&gt; 1 fake_METs ~ ENMO + I(ENMO^2) + I(ENMO^3)   -0.03106764 2.152466</span></span>
+<span id="cb12-26"><a href="#cb12-26" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-27"><a href="#cb12-27" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-28"><a href="#cb12-28" tabindex="-1"></a><span class="co">#&gt; $leave_one_out</span></span>
+<span id="cb12-29"><a href="#cb12-29" tabindex="-1"></a><span class="co">#&gt;       RMSE     MAPE</span></span>
+<span id="cb12-30"><a href="#cb12-30" tabindex="-1"></a><span class="co">#&gt; 1 4358.838 13675.04</span></span>
+<span id="cb12-31"><a href="#cb12-31" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-32"><a href="#cb12-32" tabindex="-1"></a><span class="co">#&gt; $algorithm</span></span>
+<span id="cb12-33"><a href="#cb12-33" tabindex="-1"></a><span class="co">#&gt; [1] &quot;If ENMO &lt;= 65.71: METS = 1.25&quot;                                                                                         </span></span>
+<span id="cb12-34"><a href="#cb12-34" tabindex="-1"></a><span class="co">#&gt; [2] &quot;If ENMO &gt; 65.71 AND ENMO_CV10s &lt;= 0.48: METs = 18.336 - 0.226 (ENMO)&quot;                                                  </span></span>
+<span id="cb12-35"><a href="#cb12-35" tabindex="-1"></a><span class="co">#&gt; [3] &quot;If ENMO &gt; 65.71 AND ENMO_CV10s &gt; 0.48: METs = 5306.279 - 216.4804 (ENMO) +   2.9170 (I(ENMO^2)) -   0.0129 (I(ENMO^3))&quot;</span></span></code></pre></div>
 <p>For the plot function, you’ll need to fill in some of the same values
 from the original call to <code>fit_2rm</code>. Use code that matches
 the following pattern:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="do">## You have to explicitly type `object = ` for this to work</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">object =</span> my_model,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_cp_activities =</span> <span class="fu">c</span>(fake_sed, fake_lpa),</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_activities =</span> fake_sed,</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">sed_cpVar =</span> <span class="st">&quot;ENMO&quot;</span>,</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">activity_var =</span> <span class="st">&quot;Activity&quot;</span>,</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">met_var =</span> <span class="st">&quot;fake_METs&quot;</span>,</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">walkrun_activities =</span> fake_cwr,</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">walkrun_cpVar =</span> <span class="st">&quot;ENMO_CV10s&quot;</span>,</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">print =</span> <span class="cn">TRUE</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="data:image/png;base64,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" width="85%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="do">## You have to explicitly type `object = ` for this to work</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="at">object =</span> my_model,</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>  <span class="at">sed_cp_activities =</span> <span class="fu">c</span>(fake_sed, fake_lpa),</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>  <span class="at">sed_activities =</span> fake_sed,</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>  <span class="at">sed_cpVar =</span> <span class="st">&quot;ENMO&quot;</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>  <span class="at">activity_var =</span> <span class="st">&quot;Activity&quot;</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>  <span class="at">met_var =</span> <span class="st">&quot;fake_METs&quot;</span>,</span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>  <span class="at">walkrun_activities =</span> fake_cwr,</span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a>  <span class="at">walkrun_cpVar =</span> <span class="st">&quot;ENMO_CV10s&quot;</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>  <span class="at">print =</span> <span class="cn">TRUE</span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" width="85%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="using-new-models" class="section level2">
@@ -855,86 +862,86 @@ the following pattern:</p>
 That’s easy to do using the <code>predict</code> method included in the
 package. If we pretend our <code>all_data</code> object is a new
 dataset, we could get predictions by running code like this:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>new_results <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_model, all_data)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(new_results)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     PID           Timestamp     ENMO Gyroscope_VM_DegPerS</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Test1 2015-11-12 15:45:00 91.81064            0.6985270</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Test1 2015-11-12 15:45:01 63.90690            0.6976330</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Test1 2015-11-12 15:45:02 63.70351            0.6806886</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Test1 2015-11-12 15:45:03 64.24208            0.6806373</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Test1 2015-11-12 15:45:04 63.70059            0.6926852</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Test1 2015-11-12 15:45:05 63.58346            0.6989126</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_x_DegPerS mean_abs_Gyroscope_y_DegPerS</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                    0.2207365                    0.5846348</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                    0.2344190                    0.5713514</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                    0.2176725                    0.5628797</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                    0.2382042                    0.5606505</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                    0.2274410                    0.5743000</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                    0.2290555                    0.5746244</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_z_DegPerS mean_magnetometer_direction   Activity fake_METs</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                    0.3059072                           S    Sitting  1.853070</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                    0.3203365                           S     Tennis  7.402845</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                    0.3101393                           S    Running  5.903824</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                    0.3001943                           S Basketball  2.685811</span></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                    0.3083593                           S    Running  6.890708</span></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                    0.3191014                           S    Sitting  1.253249</span></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ENMO_CV10s Classification    METs</span></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 13.3261509   intermittent 1.85306</span></span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  0.6433354             SB 1.25000</span></span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  0.6433354             SB 1.25000</span></span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  0.6433354             SB 1.25000</span></span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  0.6433354             SB 1.25000</span></span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  0.6433354             SB 1.25000</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>new_results <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_model, all_data)</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">head</span>(new_results)</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co">#&gt;     PID           Timestamp     ENMO Gyroscope_VM_DegPerS</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co">#&gt; 1 Test1 2015-11-12 15:45:00 91.81064            0.6985270</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co">#&gt; 2 Test1 2015-11-12 15:45:01 63.90690            0.6976330</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">#&gt; 3 Test1 2015-11-12 15:45:02 63.70351            0.6806886</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">#&gt; 4 Test1 2015-11-12 15:45:03 64.24208            0.6806373</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt; 5 Test1 2015-11-12 15:45:04 63.70059            0.6926852</span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt; 6 Test1 2015-11-12 15:45:05 63.58346            0.6989126</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_x_DegPerS mean_abs_Gyroscope_y_DegPerS</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="co">#&gt; 1                    0.2207365                    0.5846348</span></span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co">#&gt; 2                    0.2344190                    0.5713514</span></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="co">#&gt; 3                    0.2176725                    0.5628797</span></span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co">#&gt; 4                    0.2382042                    0.5606505</span></span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="co">#&gt; 5                    0.2274410                    0.5743000</span></span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="co">#&gt; 6                    0.2290555                    0.5746244</span></span>
+<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_z_DegPerS mean_magnetometer_direction   Activity fake_METs</span></span>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co">#&gt; 1                    0.3059072                           S    Sitting  1.853070</span></span>
+<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="co">#&gt; 2                    0.3203365                           S     Tennis  7.402845</span></span>
+<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a><span class="co">#&gt; 3                    0.3101393                           S    Running  5.903824</span></span>
+<span id="cb14-23"><a href="#cb14-23" tabindex="-1"></a><span class="co">#&gt; 4                    0.3001943                           S Basketball  2.685811</span></span>
+<span id="cb14-24"><a href="#cb14-24" tabindex="-1"></a><span class="co">#&gt; 5                    0.3083593                           S    Running  6.890708</span></span>
+<span id="cb14-25"><a href="#cb14-25" tabindex="-1"></a><span class="co">#&gt; 6                    0.3191014                           S    Sitting  1.253249</span></span>
+<span id="cb14-26"><a href="#cb14-26" tabindex="-1"></a><span class="co">#&gt;   ENMO_CV10s Classification    METs</span></span>
+<span id="cb14-27"><a href="#cb14-27" tabindex="-1"></a><span class="co">#&gt; 1 13.3261509   intermittent 1.85306</span></span>
+<span id="cb14-28"><a href="#cb14-28" tabindex="-1"></a><span class="co">#&gt; 2  0.6433354             SB 1.25000</span></span>
+<span id="cb14-29"><a href="#cb14-29" tabindex="-1"></a><span class="co">#&gt; 3  0.6433354             SB 1.25000</span></span>
+<span id="cb14-30"><a href="#cb14-30" tabindex="-1"></a><span class="co">#&gt; 4  0.6433354             SB 1.25000</span></span>
+<span id="cb14-31"><a href="#cb14-31" tabindex="-1"></a><span class="co">#&gt; 5  0.6433354             SB 1.25000</span></span>
+<span id="cb14-32"><a href="#cb14-32" tabindex="-1"></a><span class="co">#&gt; 6  0.6433354             SB 1.25000</span></span></code></pre></div>
 <p>When making predictions, you can specify <code>verbose = TRUE</code>
 if you want to print a message to the console about making predictions
 from your model. By default, it will say it’s making predictions using
 the ‘user_unspecified’ model. To give your model a name, you can assign
 a value to its <code>method</code> element. Consider the following:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>results_default <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_model, all_data, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Calculating EE using the &#39;user_unspecified&#39; two-regression model</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>my_model<span class="sc">$</span>method <span class="ot">&lt;-</span> <span class="st">&quot;My Customized 2RM&quot;</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>results_updated <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_model, all_data, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Calculating EE using the &#39;My Customized 2RM&#39; two-regression model</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>results_default <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_model, all_data, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co">#&gt; Calculating EE using the &#39;user_unspecified&#39; two-regression model</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>my_model<span class="sc">$</span>method <span class="ot">&lt;-</span> <span class="st">&quot;My Customized 2RM&quot;</span></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a>results_updated <span class="ot">&lt;-</span> <span class="fu">predict</span>(my_model, all_data, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="co">#&gt; Calculating EE using the &#39;My Customized 2RM&#39; two-regression model</span></span></code></pre></div>
 <p>And, of course, you can collapse the estimates to a particular time
 granularity using <code>smooth_2rm</code> like this:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="do">## This code illustrates collapsing every 60 seconds. (This is the default</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="do">## period and also the typical recommendation, but you could do anything,</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="do">## e.g., &quot;10 sec&quot;, &quot;30 sec&quot;, or &quot;0.25 hour&quot;)</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>TwoRegression<span class="sc">::</span><span class="fu">smooth_2rm</span>(results_updated, <span class="st">&quot;Timestamp&quot;</span>, <span class="st">&quot;60 sec&quot;</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Timestamp   PID mean_magnetometer_direction   Activity     ENMO</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00 Test1                           S    Sitting 3955.371</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00 Test1                           S Basketball 3971.312</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00 Test1                           S    Walking 3970.534</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00 Test2                           S Basketball 3929.218</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00 Test2                           S    Running 3771.568</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Gyroscope_VM_DegPerS mean_abs_Gyroscope_x_DegPerS</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1             41.23766                     13.79911</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2             41.46834                     13.82252</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3             41.77129                     14.04145</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4             41.99182                     14.09534</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5             41.40131                     13.84211</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_y_DegPerS mean_abs_Gyroscope_z_DegPerS ENMO_CV10s</span></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                     33.78546                     18.90326  0.6910839</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                     33.91097                     19.15887  0.4586548</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                     34.32867                     18.90991  0.5657218</span></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                     34.66010                     18.75561  0.5590702</span></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5                     34.23208                     18.42478  0.6726754</span></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   SB_epochs walkrun_epochs intermittent_epochs fake_METs     METs</span></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        28             26                   6  3.452270 2.398673</span></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2         8             35                  17  3.521533 3.139028</span></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3        10             19                  31  3.186677 3.128555</span></span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4        41              4                  15  3.882197 2.001488</span></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5        59              0                   0  3.610416 1.250000</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="do">## This code illustrates collapsing every 60 seconds. (This is the default</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="do">## period and also the typical recommendation, but you could do anything,</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="do">## e.g., &quot;10 sec&quot;, &quot;30 sec&quot;, or &quot;0.25 hour&quot;)</span></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>TwoRegression<span class="sc">::</span><span class="fu">smooth_2rm</span>(results_updated, <span class="st">&quot;Timestamp&quot;</span>, <span class="st">&quot;60 sec&quot;</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="co">#&gt;             Timestamp   PID mean_magnetometer_direction   Activity     ENMO</span></span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="co">#&gt; 1 2015-11-12 15:45:00 Test1                           S    Sitting 3955.371</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a><span class="co">#&gt; 2 2015-11-12 15:46:00 Test1                           S Basketball 3971.312</span></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="co">#&gt; 3 2015-11-12 15:47:00 Test1                           S    Walking 3970.534</span></span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a><span class="co">#&gt; 4 2015-11-12 15:48:00 Test2                           S Basketball 3929.218</span></span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="co">#&gt; 5 2015-11-12 15:49:00 Test2                           S    Running 3771.568</span></span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a><span class="co">#&gt;   Gyroscope_VM_DegPerS mean_abs_Gyroscope_x_DegPerS</span></span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a><span class="co">#&gt; 1             41.23766                     13.79911</span></span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a><span class="co">#&gt; 2             41.46834                     13.82252</span></span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a><span class="co">#&gt; 3             41.77129                     14.04145</span></span>
+<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a><span class="co">#&gt; 4             41.99182                     14.09534</span></span>
+<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a><span class="co">#&gt; 5             41.40131                     13.84211</span></span>
+<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a><span class="co">#&gt;   mean_abs_Gyroscope_y_DegPerS mean_abs_Gyroscope_z_DegPerS ENMO_CV10s</span></span>
+<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a><span class="co">#&gt; 1                     33.78546                     18.90326  0.6910839</span></span>
+<span id="cb16-20"><a href="#cb16-20" tabindex="-1"></a><span class="co">#&gt; 2                     33.91097                     19.15887  0.4586548</span></span>
+<span id="cb16-21"><a href="#cb16-21" tabindex="-1"></a><span class="co">#&gt; 3                     34.32867                     18.90991  0.5657218</span></span>
+<span id="cb16-22"><a href="#cb16-22" tabindex="-1"></a><span class="co">#&gt; 4                     34.66010                     18.75561  0.5590702</span></span>
+<span id="cb16-23"><a href="#cb16-23" tabindex="-1"></a><span class="co">#&gt; 5                     34.23208                     18.42478  0.6726754</span></span>
+<span id="cb16-24"><a href="#cb16-24" tabindex="-1"></a><span class="co">#&gt;   SB_epochs walkrun_epochs intermittent_epochs fake_METs     METs</span></span>
+<span id="cb16-25"><a href="#cb16-25" tabindex="-1"></a><span class="co">#&gt; 1        28             26                   6  3.452270 2.398673</span></span>
+<span id="cb16-26"><a href="#cb16-26" tabindex="-1"></a><span class="co">#&gt; 2         8             35                  17  3.521533 3.139028</span></span>
+<span id="cb16-27"><a href="#cb16-27" tabindex="-1"></a><span class="co">#&gt; 3        10             19                  31  3.186677 3.128555</span></span>
+<span id="cb16-28"><a href="#cb16-28" tabindex="-1"></a><span class="co">#&gt; 4        41              4                  15  3.882197 2.001488</span></span>
+<span id="cb16-29"><a href="#cb16-29" tabindex="-1"></a><span class="co">#&gt; 5        59              0                   0  3.610416 1.250000</span></span></code></pre></div>
 </div>
 <div id="conclusion" class="section level2">
 <h2>CONCLUSION</h2>

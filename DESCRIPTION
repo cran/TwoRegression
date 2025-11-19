@@ -1,7 +1,7 @@
 Package: TwoRegression
 Type: Package
 Title: Develop and Apply Two-Regression Algorithms
-Version: 1.0.0
+Version: 1.1.1
 Authors@R: c(
     person(c("Paul", "R."), "Hibbing", email = "paulhibbing@gmail.com",
 		  role = c("aut","cre")),
@@ -15,12 +15,12 @@ Description: Facilitates development and application of two-regression
     However, other algorithms are now supported. Please see the associated
     references in the package documentation for full details of the algorithms
     that are supported.
-License: GPL-3 | file LICENSE
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: dplyr (>= 0.5.0), ggplot2 (>= 2.2.0), magrittr (>= 1.5),
-        gridExtra (>= 2.3), PAutilities (>= 1.1.0), pROC (>= 1.16.0),
-        RcppRoll, stats, rlang, lubridate, tidyr
+Imports: dplyr (>= 0.5.0), ggplot2 (>= 3.4.0), gridExtra (>= 2.3),
+        lubridate, magrittr (>= 1.5), PAutilities (>= 1.1.0), pROC (>=
+        1.16.0), RcppRoll, rlang, stats, tidyr
 RoxygenNote: 7.1.2
 Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
 VignetteBuilder: knitr
@@ -28,9 +28,9 @@ URL: https://github.com/paulhibbing/TwoRegression
 BugReports: https://github.com/paulhibbing/TwoRegression/issues
 Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2022-09-05 03:08:39 UTC; prhibbing
+Packaged: 2025-11-15 12:38:45 UTC; paulh
 Author: Paul R. Hibbing [aut, cre],
   Vincent T. van Hees [ctb]
 Maintainer: Paul R. Hibbing <paulhibbing@gmail.com>
 Repository: CRAN
-Date/Publication: 2022-09-05 06:40:05 UTC
+Date/Publication: 2025-11-19 19:50:13 UTC
